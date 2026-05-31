@@ -14,6 +14,7 @@ import Dashboard from './views/Dashboard.vue'
 import Login from './views/Login.vue'
 import SplashScreen from './components/SplashScreen.vue'
 import ParticlesBackground from './components/ParticlesBackground.vue'
+import CVPrintTemplate from './components/CVPrintTemplate.vue'
 
 const activePage = ref('home')
 const portfolioData = ref(null)
@@ -178,6 +179,9 @@ onUnmounted(() => {
 
     <!-- Entrance Splash Screen -->
     <SplashScreen v-if="showSplash" @complete="showSplash = false" />
+
+    <!-- Printable CV Template -->
+    <CVPrintTemplate :data="portfolioData" />
   </div>
   
   <div v-else class="loading-screen">
@@ -242,4 +246,21 @@ onUnmounted(() => {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+@media print {
+  /* Hide every part of the app layout except the print area */
+  .grid-overlay,
+  .glow-radial-bg,
+  .cursor-spotlight,
+  .particles-container,
+  nav,
+  .public-content,
+  .login-content,
+  .dashboard-content,
+  .loading-screen,
+  .splash-screen {
+    display: none !important;
+  }
+}
 </style>
+

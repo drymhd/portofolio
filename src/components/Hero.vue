@@ -17,6 +17,10 @@ const handleContactClick = () => {
   }
 }
 
+const handleDownloadCV = () => {
+  window.print()
+}
+
 const getStatLabel = (label) => {
   if (label.includes('Experience')) return t('statExp')
   if (label.includes('Projects')) return t('statProj')
@@ -54,9 +58,9 @@ const getStatLabel = (label) => {
             <button @click="handleContactClick" class="btn-primary">
               {{ t('heroContactMe') }} <ArrowRight :size="16" />
             </button>
-            <a href="javascript:void(0)" class="btn-secondary">
+            <button @click="handleDownloadCV" class="btn-secondary">
               {{ t('heroDownloadCV') }} <Download :size="16" />
-            </a>
+            </button>
           </div>
 
           <div class="hero-socials">

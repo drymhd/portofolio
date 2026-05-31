@@ -124,6 +124,7 @@ export const staticTranslations = {
     dayFri: 'Fri',
     daySat: 'Sat',
     daySun: 'Sun',
+    dashExportPdfBtn: 'Export CV as PDF',
     
     // Dashboard - Profile
     dashProfileTitle: 'Personal Information',
@@ -323,6 +324,7 @@ export const staticTranslations = {
     dayFri: 'Jum',
     daySat: 'Sab',
     daySun: 'Min',
+    dashExportPdfBtn: 'Ekspor CV ke PDF',
     
     // Dashboard - Profile
     dashProfileTitle: 'Informasi Pribadi',

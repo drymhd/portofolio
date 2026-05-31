@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { 
   Users, MessageSquare, Briefcase, Award, Save, Plus, Trash2, 
-  Edit3, CheckCircle, AlertCircle, FileJson, Mail, ChevronRight, X 
+  Edit3, CheckCircle, AlertCircle, FileJson, Mail, ChevronRight, X, Download 
 } from '@lucide/vue'
 import { t, val } from '../i18n.js'
 
@@ -248,6 +248,10 @@ const saveRawJson = () => {
 const syncJsonText = () => {
   rawJsonText.value = JSON.stringify(props.data, null, 2)
 }
+
+const exportPdf = () => {
+  window.print()
+}
 </script>
 
 <template>
@@ -415,9 +419,14 @@ const syncJsonText = () => {
               <textarea v-model="profileForm['aboutText_' + editLang]" rows="4" class="form-input" required></textarea>
             </div>
 
-            <button type="submit" class="btn-primary">
-              <Save :size="16" /> {{ t('dashProfileSaveBtn') }}
-            </button>
+            <div class="form-actions-row">
+              <button type="submit" class="btn-primary">
+                <Save :size="16" /> {{ t('dashProfileSaveBtn') }}
+              </button>
+              <button type="button" @click="exportPdf" class="btn-secondary">
+                <Download :size="16" /> {{ t('dashExportPdfBtn') }}
+              </button>
+            </div>
           </form>
         </div>
 
@@ -1340,6 +1349,14 @@ const syncJsonText = () => {
     grid-template-columns: 1fr;
   }
 }
+/* Button action layout */
+.form-actions-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 10px;
+}
+
 /* Language Selector tabs in Edit Profile */
 .edit-lang-tabs {
   display: flex;
