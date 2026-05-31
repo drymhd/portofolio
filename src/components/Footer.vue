@@ -16,7 +16,7 @@ const scrollToTop = () => {
 
 <template>
   <footer class="footer-container">
-    <div class="footer-content">
+    <div class="footer-content" data-aos="fade-up">
       <div class="footer-top">
         <div class="logo-area">
           <div class="logo-badge">DM</div>

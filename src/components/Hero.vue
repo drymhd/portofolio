@@ -40,21 +40,21 @@ const getStatLabel = (label) => {
       <div class="hero-grid">
         <!-- Left: Text content -->
         <div class="hero-content">
-          <div class="badge-tag">
+          <div class="badge-tag" data-aos="fade-up">
             <span class="pulse-dot"></span>
             {{ t('heroStatus') }}
           </div>
           
-          <h1 class="hero-title">
+          <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
             {{ t('heroGreeting') }} <span class="highlight-text">{{ data.personal.name }}</span>
             <span class="role-text text-gradient">{{ val(data.personal, 'title') }}</span>
           </h1>
           
-          <p class="hero-description">
+          <p class="hero-description" data-aos="fade-up" data-aos-delay="200">
             {{ val(data.personal, 'bio') }}
           </p>
-
-          <div class="hero-actions">
+ 
+          <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
             <button @click="handleContactClick" class="btn-primary">
               {{ t('heroContactMe') }} <ArrowRight :size="16" />
             </button>
@@ -62,8 +62,8 @@ const getStatLabel = (label) => {
               {{ t('heroDownloadCV') }} <Download :size="16" />
             </button>
           </div>
-
-          <div class="hero-socials">
+ 
+          <div class="hero-socials" data-aos="fade-up" data-aos-delay="400">
             <a :href="data.personal.linkedin" target="_blank" aria-label="LinkedIn">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
@@ -75,9 +75,9 @@ const getStatLabel = (label) => {
             </a>
           </div>
         </div>
-
+ 
         <!-- Right: Animated Portrait -->
-        <div class="hero-image-container">
+        <div class="hero-image-container" data-aos="zoom-in" data-aos-delay="200">
           <div class="portrait-wrapper anim-float">
             <div class="glowing-ring"></div>
             <div class="glowing-ring ring-2"></div>
@@ -87,9 +87,9 @@ const getStatLabel = (label) => {
           </div>
         </div>
       </div>
-
+ 
       <!-- Stats Bar (below hero grid) -->
-      <div class="stats-bar glass-card">
+      <div class="stats-bar glass-card" data-aos="fade-up" data-aos-delay="500">
         <div v-for="(stat, idx) in data.personal.stats" :key="idx" class="stat-item">
           <div class="stat-value text-accent glow-text">{{ stat.value }}</div>
           <div class="stat-label">{{ getStatLabel(stat.label) }}</div>

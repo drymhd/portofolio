@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import defaultData from './assets/data-default.json'
 
 // Components
@@ -16,6 +16,8 @@ import SplashScreen from './components/SplashScreen.vue'
 import ParticlesBackground from './components/ParticlesBackground.vue'
 import CVPrintTemplate from './components/CVPrintTemplate.vue'
 import CustomCursor from './components/CustomCursor.vue'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const activePage = ref('home')
 const portfolioData = ref(null)
@@ -47,6 +49,9 @@ const initData = () => {
     localStorage.setItem('dary_portfolio_data', JSON.stringify(defaultData))
   }
 }
+
+// Call initData synchronously during setup so DOM structure starts rendering immediately
+initData()
 
 // Update database handler
 const updateData = (newData) => {
@@ -165,8 +170,6 @@ const blockDevTools = (e) => {
 }
 
 onMounted(() => {
-  initData()
-  
   window.addEventListener('hashchange', handleHashChange)
   window.addEventListener('mousemove', updateMousePosition)
   window.addEventListener('scroll', handleScrollSpy)
@@ -175,6 +178,35 @@ onMounted(() => {
   
   handleHashChange()
   handleScrollSpy() // Initial check on mount
+})
+
+// Initialize AOS only after the splash screen completes and disappears
+const onSplashComplete = () => {
+  showSplash.value = false
+  nextTick(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 50
+    })
+  })
+}
+
+// Re-initialize AOS when navigating back to the public portfolio sections from the dashboard
+watch(activePage, (newPage, oldPage) => {
+  const wasAdminOrLogin = oldPage === 'dashboard' || oldPage === 'login'
+  const isPublicPage = newPage !== 'dashboard' && newPage !== 'login'
+  if (isPublicPage && wasAdminOrLogin) {
+    nextTick(() => {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 50
+      })
+    })
+  }
 })
 
 onUnmounted(() => {
@@ -227,7 +259,7 @@ onUnmounted(() => {
     </div>
 
     <!-- Entrance Splash Screen -->
-    <SplashScreen v-if="showSplash" @complete="showSplash = false" />
+    <SplashScreen v-if="showSplash" @complete="onSplashComplete" />
 
     <!-- Printable CV Template -->
     <CVPrintTemplate :data="portfolioData" />

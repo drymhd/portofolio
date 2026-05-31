@@ -17,7 +17,7 @@ const activeTab = ref('experience')
   <section id="about" class="about-section section-padding">
     <div class="container">
       <!-- Section Title -->
-      <div class="section-title-wrapper">
+      <div class="section-title-wrapper" data-aos="fade-up">
         <span class="subtitle">{{ t('aboutSubtitle') }}</span>
         <h2 class="section-title">{{ t('aboutMePart1') }} <span class="text-accent glow-text">{{ t('aboutMePart2') }}</span></h2>
         <div class="title-divider"></div>
@@ -25,7 +25,7 @@ const activeTab = ref('experience')
 
       <div class="about-grid">
         <!-- Left: Bio & Tech Skills -->
-        <div class="about-left">
+        <div class="about-left" data-aos="fade-right">
           <div class="bio-card glass-card">
             <h3>{{ t('aboutWhoIs') }} Dary Mahdi?</h3>
             <p>{{ val(data.personal, 'aboutText') }}</p>
@@ -54,7 +54,7 @@ const activeTab = ref('experience')
         </div>
 
         <!-- Right: Tabs for Experience / Education / Certs -->
-        <div class="about-right">
+        <div class="about-right" data-aos="fade-left">
           <div class="tabs-header glass-card">
             <button 
               @click="activeTab = 'experience'" 

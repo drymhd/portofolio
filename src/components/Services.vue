@@ -28,7 +28,7 @@ const getIconComponent = (iconName) => {
   <section id="services" class="services-section section-padding">
     <div class="container">
       <!-- Section Header -->
-      <div class="section-title-wrapper">
+      <div class="section-title-wrapper" data-aos="fade-up">
         <span class="subtitle">{{ t('servicesSubtitle') }}</span>
         <h2 class="section-title">{{ t('servicesTitlePart1') }} <span class="text-accent glow-text">{{ t('servicesTitlePart2') }}</span></h2>
         <div class="title-divider"></div>
@@ -40,7 +40,8 @@ const getIconComponent = (iconName) => {
           v-for="(service, idx) in data.services" 
           :key="idx" 
           :class="['service-card', 'glass-card', { 'glow-border-highlight': activeIndex === idx }]"
-          :style="{ animationDelay: `${idx * 0.06}s` }"
+          data-aos="fade-up"
+          :data-aos-delay="idx * 100"
           @mouseenter="activeIndex = idx"
         >
           <!-- Neon Corner Glow -->
@@ -122,7 +123,6 @@ const getIconComponent = (iconName) => {
   flex-direction: column;
   height: 100%;
   overflow: hidden;
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
               border-color 0.3s ease, 
               box-shadow 0.3s ease, 

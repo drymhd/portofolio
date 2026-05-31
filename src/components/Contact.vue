@@ -68,7 +68,7 @@ const submitForm = () => {
   <section id="contact" class="contact-section section-padding">
     <div class="container">
       <!-- Section Header -->
-      <div class="section-title-wrapper">
+      <div class="section-title-wrapper" data-aos="fade-up">
         <span class="subtitle">{{ t('contactSubtitle') }}</span>
         <h2 class="section-title">{{ t('navContact') }} <span class="text-accent glow-text">{{ t('contactMePart2') }}</span></h2>
         <div class="title-divider"></div>
@@ -76,7 +76,7 @@ const submitForm = () => {
 
       <div class="contact-grid">
         <!-- Left: Contact Details -->
-        <div class="contact-info-container">
+        <div class="contact-info-container" data-aos="fade-right">
           <h3 class="info-title">{{ t('contactTitle') }}</h3>
           <p class="info-desc">
             {{ t('contactIntro') }}
@@ -116,7 +116,7 @@ const submitForm = () => {
         </div>
 
         <!-- Right: Glass Contact Form -->
-        <div class="contact-form-container glass-card">
+        <div class="contact-form-container glass-card" data-aos="fade-left">
           <form @submit.prevent="submitForm" class="contact-form">
             <div class="form-group">
               <label for="name">{{ t('contactFormName') }} *</label>

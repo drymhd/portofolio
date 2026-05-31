@@ -51,7 +51,7 @@ const getCategoryLabel = (cat) => {
 
     <div class="container">
       <!-- Section Header -->
-      <div class="section-title-wrapper">
+      <div class="section-title-wrapper" data-aos="fade-up">
         <span class="subtitle">{{ t('projectsSubtitle') }}</span>
         <h2 class="section-title">{{ t('projectsTitlePart1') }} <span class="text-accent glow-text">{{ t('projectsTitlePart2') }}</span></h2>
         <p class="section-intro">
@@ -61,7 +61,7 @@ const getCategoryLabel = (cat) => {
       </div>
 
       <!-- Filters with Count Badges -->
-      <div class="filters-container">
+      <div class="filters-container" data-aos="fade-up">
         <button 
           v-for="cat in categories" 
           :key="cat" 
@@ -74,12 +74,11 @@ const getCategoryLabel = (cat) => {
       </div>
 
       <!-- Projects Grid (Asymmetrical Layout) -->
-      <transition-group name="list" tag="div" class="projects-grid">
+      <transition-group name="list" tag="div" class="projects-grid" data-aos="fade-up">
         <div 
           v-for="(project, idx) in filteredProjects" 
           :key="project.id" 
           :class="['project-card', 'glass-card', { 'flagship-card': isFlagship(project.id) }]"
-          :style="{ animationDelay: `${idx * 0.06}s` }"
         >
           <!-- Flagship Ribbon Badge -->
           <div v-if="isFlagship(project.id)" class="flagship-badge">
@@ -285,7 +284,6 @@ const getCategoryLabel = (cat) => {
   height: 100%;
   position: relative;
   background: rgba(15, 20, 32, 0.4);
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .project-card:hover {
