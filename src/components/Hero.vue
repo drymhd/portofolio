@@ -1,7 +1,7 @@
 <script setup>
 import { ArrowRight, Download, Mail } from '@lucide/vue'
 import { t, val } from '../i18n.js'
-const avatarUrl = '/avatar.png'
+const avatarUrl = `/avatar.png?v=${Date.now()}`
 
 const props = defineProps({
   data: {
