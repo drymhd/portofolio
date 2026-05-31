@@ -122,6 +122,7 @@ const activeTab = ref('experience')
                     <div>
                       <h5>{{ val(cert, 'title') }}</h5>
                       <p>{{ cert.issuer }} <span v-if="cert.period">• {{ cert.period }}</span></p>
+                      <p v-if="cert.credentialId" class="cert-id-tag">ID: {{ cert.credentialId }}</p>
                     </div>
                   </div>
                 </div>
@@ -510,6 +511,13 @@ const activeTab = ref('experience')
 .cert-card p {
   font-size: 13px;
   color: var(--text-muted);
+}
+
+.cert-id-tag {
+  font-size: 11px;
+  color: var(--accent);
+  margin-top: 4px;
+  font-family: ui-monospace, Consolas, monospace;
 }
 
 .lang-section {

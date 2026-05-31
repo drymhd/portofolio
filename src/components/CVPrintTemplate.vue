@@ -98,6 +98,7 @@ defineProps({
           <div v-for="(cert, idx) in data.certifications" :key="idx" class="cv-cert-entry">
             <div class="cv-cert-title">{{ val(cert, 'title') }}</div>
             <div class="cv-cert-meta">{{ cert.issuer }} | {{ cert.period }}</div>
+            <div v-if="cert.credentialId" class="cv-cert-meta">ID: {{ cert.credentialId }}</div>
           </div>
         </section>
 

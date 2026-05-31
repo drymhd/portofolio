@@ -139,22 +139,67 @@
   ],
   "certifications": [
     {
-      "title_en": "Junior Web Developer",
-      "title_id": "Developer Web Junior",
-      "issuer": "BNSP",
-      "period": "2023 - 2026"
+      "title_en": "Golden English Proficiency Test (GE - EPT)",
+      "title_id": "Uji Kemahiran Bahasa Inggris Golden English (GE - EPT)",
+      "issuer": "Golden English Course",
+      "period": "Apr 2026",
+      "credentialId": "GE.EPT.02B.66835"
+    },
+    {
+      "title_en": "Node (Basic)",
+      "title_id": "Node (Dasar)",
+      "issuer": "HackerRank",
+      "period": "Nov 2023",
+      "credentialId": "c36a38f636db"
+    },
+    {
+      "title_en": "Software Engineer Intern Certificate",
+      "title_id": "Sertifikasi Magang Rekayasa Perangkat Lunak",
+      "issuer": "HackerRank",
+      "period": "Nov 2023",
+      "credentialId": "827dec94d759"
+    },
+    {
+      "title_en": "Go (Basic)",
+      "title_id": "Go (Dasar)",
+      "issuer": "HackerRank",
+      "period": "Nov 2023",
+      "credentialId": "2ec8dd825ffe"
+    },
+    {
+      "title_en": "Python (Basic)",
+      "title_id": "Python (Dasar)",
+      "issuer": "HackerRank",
+      "period": "Nov 2023",
+      "credentialId": ""
+    },
+    {
+      "title_en": "JavaScript (Basic)",
+      "title_id": "JavaScript (Dasar)",
+      "issuer": "HackerRank",
+      "period": "Nov 2023",
+      "credentialId": "f3b52e723fbf"
+    },
+    {
+      "title_en": "SQL (Basic)",
+      "title_id": "SQL (Dasar)",
+      "issuer": "HackerRank",
+      "period": "Nov 2023",
+      "credentialId": "691396b79581"
     },
     {
       "title_en": "Rest API (Intermediate)",
       "title_id": "Rest API (Menengah)",
       "issuer": "HackerRank",
-      "period": "2024"
+      "period": "Nov 2023",
+      "credentialId": "ae50861680e8"
     },
     {
-      "title_en": "SQL (Intermediate)",
-      "title_id": "SQL (Menengah)",
-      "issuer": "HackerRank",
-      "period": "2024"
+      "title_en": "Junior Web Developer",
+      "title_id": "Developer Web Junior",
+      "issuer": "Badan Nasional Sertifikasi Profesi (BNSP)",
+      "period": "Apr 2023 - Apr 2026",
+      "credentialId": "620102513400358192023"
     }
   ],
   "languages": [
