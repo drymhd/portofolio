@@ -526,7 +526,11 @@ const isFlagship = (id) => {
 /* Animations */
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.list-move {
+  transition: transform 0.4s ease;
 }
 
 .list-enter-from {

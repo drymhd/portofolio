@@ -70,8 +70,11 @@ onMounted(() => {
   window.addEventListener('mousemove', handleMouseMove)
   window.addEventListener('mouseleave', handleMouseLeave)
 
+  let isTabVisible = true
+
   // Animation Loop
   const animate = () => {
+    if (!isTabVisible) return
     ctx.clearRect(0, 0, width, height)
 
     // Update and draw particles
@@ -122,10 +125,28 @@ onMounted(() => {
     animationId = requestAnimationFrame(animate)
   }
 
+  const handleVisibilityChange = () => {
+    if (document.hidden) {
+      isTabVisible = false
+      if (animationId) {
+        cancelAnimationFrame(animationId)
+        animationId = null
+      }
+    } else {
+      isTabVisible = true
+      if (!animationId) {
+        animate()
+      }
+    }
+  }
+
+  document.addEventListener('visibilitychange', handleVisibilityChange)
+
   animate()
 
   onUnmounted(() => {
     cancelAnimationFrame(animationId)
+    document.removeEventListener('visibilitychange', handleVisibilityChange)
     window.removeEventListener('resize', handleResize)
     window.removeEventListener('mousemove', handleMouseMove)
     window.removeEventListener('mouseleave', handleMouseLeave)
