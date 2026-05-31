@@ -3,6 +3,13 @@ import { ref } from 'vue'
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertTriangle } from '@lucide/vue'
 import { t, val } from '../i18n.js'
 
+defineProps({
+  data: {
+    type: Object,
+    required: true
+  }
+})
+
 const name = ref('')
 const email = ref('')
 const subject = ref('')

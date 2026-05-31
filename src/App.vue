@@ -160,7 +160,7 @@ onUnmounted(() => {
       <About :data="portfolioData" />
       <Services :data="portfolioData" />
       <Projects :data="portfolioData" />
-      <Contact />
+      <Contact :data="portfolioData" />
       <Footer :data="portfolioData" />
     </div>
 
