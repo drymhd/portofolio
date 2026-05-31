@@ -1,29 +1,31 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { t } from '../i18n.js'
 
 const emit = defineEmits(['complete'])
 
 const progress = ref(0)
-const statusText = ref('Loading profile database...')
+const statusText = ref('')
 const isCompleted = ref(false)
 const triggerShockwave = ref(false)
 
 const statuses = [
-  { val: 20, text: 'Compiling credentials...' },
-  { val: 50, text: 'Configuring custom modules...' },
-  { val: 80, text: 'Polishing user interface...' },
-  { val: 100, text: 'Welcome!' }
+  { val: 20, key: 'splashCompiling' },
+  { val: 55, key: 'splashLoading' },
+  { val: 80, key: 'splashOptimizing' },
+  { val: 100, key: 'splashReady' }
 ]
 
 onMounted(() => {
-  let step = 0
+  statusText.value = t('splashLoading')
+  
   const interval = setInterval(() => {
     progress.value += 1
     
     // Update status text based on progress
     const matchedStatus = statuses.find(s => progress.value <= s.val)
-    if (matchedStatus && statusText.value !== matchedStatus.text) {
-      statusText.value = matchedStatus.text
+    if (matchedStatus) {
+      statusText.value = t(matchedStatus.key)
     }
 
     if (progress.value >= 100) {

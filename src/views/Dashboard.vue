@@ -4,6 +4,7 @@ import {
   Users, MessageSquare, Briefcase, Award, Save, Plus, Trash2, 
   Edit3, CheckCircle, AlertCircle, FileJson, Mail, ChevronRight, X 
 } from '@lucide/vue'
+import { t, val } from '../i18n.js'
 
 const props = defineProps({
   data: {
@@ -19,12 +20,14 @@ const messages = ref([])
 
 // Form states
 const profileForm = ref({ ...props.data.personal })
+const editLang = ref('en') // Language tab state for editing profile fields
 
 // Project CRUD states
 const projectForm = ref({
   id: '',
   title: '',
-  description: '',
+  description_en: '',
+  description_id: '',
   category: 'Web',
   tags: '',
   image: '',
@@ -65,7 +68,7 @@ const saveProfile = () => {
   emit('update-data', updatedData)
   
   // Show quick success alert
-  alert('Profile updated successfully!')
+  alert(t('dashSaveSuccess'))
 }
 
 // Project CRUD actions
@@ -74,7 +77,8 @@ const startEditProject = (proj) => {
   projectForm.value = {
     id: proj.id,
     title: proj.title,
-    description: proj.description,
+    description_en: proj.description_en || proj.description || '',
+    description_id: proj.description_id || '',
     category: proj.category,
     tags: proj.tags.join(', '),
     image: proj.image,
@@ -87,7 +91,8 @@ const resetProjectForm = () => {
   projectForm.value = {
     id: '',
     title: '',
-    description: '',
+    description_en: '',
+    description_id: '',
     category: 'Web',
     tags: '',
     image: '',
@@ -106,7 +111,9 @@ const saveProject = () => {
         return {
           ...p,
           title: projectForm.value.title,
-          description: projectForm.value.description,
+          description_en: projectForm.value.description_en,
+          description_id: projectForm.value.description_id,
+          description: projectForm.value.description_en, // Fallback for raw reads
           category: projectForm.value.category,
           tags: tagsArray,
           image: projectForm.value.image || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600',
@@ -120,7 +127,9 @@ const saveProject = () => {
     const newProj = {
       id: Date.now().toString(),
       title: projectForm.value.title,
-      description: projectForm.value.description,
+      description_en: projectForm.value.description_en,
+      description_id: projectForm.value.description_id,
+      description: projectForm.value.description_en, // Fallback for raw reads
       category: projectForm.value.category,
       tags: tagsArray,
       image: projectForm.value.image || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600',
@@ -134,7 +143,7 @@ const saveProject = () => {
 }
 
 const deleteProject = (id) => {
-  if (confirm('Are you sure you want to delete this project?')) {
+  if (confirm(t('dashProjDeleteConfirm'))) {
     const updatedData = { ...props.data }
     updatedData.projects = updatedData.projects.filter(p => p.id !== id)
     emit('update-data', updatedData)
@@ -174,7 +183,7 @@ const toggleMessageRead = (msgId) => {
 }
 
 const deleteMessage = (msgId) => {
-  if (confirm('Delete this message?')) {
+  if (confirm(t('dashInboxDeleteConfirm'))) {
     const updated = messages.value.filter(m => m.id !== msgId)
     messages.value = updated
     localStorage.setItem('dary_portfolio_messages', JSON.stringify(updated))
@@ -249,42 +258,42 @@ const syncJsonText = () => {
       <aside class="dashboard-sidebar glass-card">
         <div class="sidebar-header">
           <FileJson :size="20" class="text-accent" />
-          <span>Admin Control</span>
+          <span>{{ t('dashAdminControl') }}</span>
         </div>
         <div class="sidebar-menu">
           <button 
             @click="activeSection = 'overview'" 
             :class="['menu-item', { active: activeSection === 'overview' }]"
           >
-            <Users :size="16" /> Overview
+            <Users :size="16" /> {{ t('dashTabsOverview') }}
           </button>
           
           <button 
             @click="activeSection = 'profile'" 
             :class="['menu-item', { active: activeSection === 'profile' }]"
           >
-            <Edit3 :size="16" /> Edit Profile
+            <Edit3 :size="16" /> {{ t('dashTabsProfile') }}
           </button>
           
           <button 
             @click="activeSection = 'projects'" 
             :class="['menu-item', { active: activeSection === 'projects' }]"
           >
-            <Briefcase :size="16" /> Projects CRUD
+            <Briefcase :size="16" /> {{ t('dashTabsProjects') }}
           </button>
           
           <button 
             @click="activeSection = 'skills'" 
             :class="['menu-item', { active: activeSection === 'skills' }]"
           >
-            <Award :size="16" /> Skills Manager
+            <Award :size="16" /> {{ t('dashTabsSkills') }}
           </button>
           
           <button 
             @click="activeSection = 'inbox'" 
             :class="['menu-item', { active: activeSection === 'inbox' }]"
           >
-            <MessageSquare :size="16" /> Message Inbox
+            <MessageSquare :size="16" /> {{ t('dashTabsInbox') }}
             <span v-if="messages.filter(m => !m.read).length > 0" class="unread-badge">
               {{ messages.filter(m => !m.read).length }}
             </span>
@@ -294,7 +303,7 @@ const syncJsonText = () => {
             @click="activeSection = 'json'; syncJsonText()" 
             :class="['menu-item', { active: activeSection === 'json' }]"
           >
-            <FileJson :size="16" /> Raw JSON Schema
+            <FileJson :size="16" /> {{ t('dashTabsRaw') }}
           </button>
         </div>
       </aside>
@@ -304,13 +313,13 @@ const syncJsonText = () => {
         
         <!-- SECTION: OVERVIEW -->
         <div v-if="activeSection === 'overview'" class="workspace-section text-left">
-          <h2>Overview Status</h2>
-          <p class="section-subtitle">Real-time metrics of your local portfolio instance.</p>
+          <h2>{{ t('dashOverviewTitle') }}</h2>
+          <p class="section-subtitle">{{ t('dashOverviewSubtitle') }}</p>
           
           <div class="metrics-grid">
             <div class="metric-card glass-card">
               <div class="metric-info">
-                <span class="metric-label">Profile Visitors (Mock)</span>
+                <span class="metric-label">{{ t('dashStatsVisitsMock') }}</span>
                 <span class="metric-value">1,424</span>
               </div>
               <Users :size="24" class="text-accent" />
@@ -318,7 +327,7 @@ const syncJsonText = () => {
 
             <div class="metric-card glass-card">
               <div class="metric-info">
-                <span class="metric-label">Total Projects</span>
+                <span class="metric-label">{{ t('dashStatsTotalProjects') }}</span>
                 <span class="metric-value">{{ data.projects.length }}</span>
               </div>
               <Briefcase :size="24" class="text-accent" />
@@ -326,10 +335,10 @@ const syncJsonText = () => {
 
             <div class="metric-card glass-card">
               <div class="metric-info">
-                <span class="metric-label">Inbox Messages</span>
+                <span class="metric-label">{{ t('dashStatsInboxCount') }}</span>
                 <span class="metric-value">{{ messages.length }}</span>
                 <span v-if="messages.filter(m => !m.read).length > 0" class="sub-value text-accent">
-                  ({{ messages.filter(m => !m.read).length }} Unread)
+                  ({{ messages.filter(m => !m.read).length }} {{ t('dashStatsUnread') }})
                 </span>
               </div>
               <MessageSquare :size="24" class="text-accent" />
@@ -338,124 +347,135 @@ const syncJsonText = () => {
 
           <!-- Activity Chart Mock -->
           <div class="chart-container glass-card">
-            <h3>Visitor Activity Graph (Weekly Mock)</h3>
+            <h3>{{ t('dashChartTitle') }}</h3>
             <div class="mock-chart">
-              <div class="chart-bar" style="--height: 40%"><span>Mon</span></div>
-              <div class="chart-bar" style="--height: 55%"><span>Tue</span></div>
-              <div class="chart-bar" style="--height: 85%"><span>Wed</span></div>
-              <div class="chart-bar" style="--height: 60%"><span>Thu</span></div>
-              <div class="chart-bar highlight" style="--height: 95%"><span>Fri</span></div>
-              <div class="chart-bar" style="--height: 70%"><span>Sat</span></div>
-              <div class="chart-bar" style="--height: 50%"><span>Sun</span></div>
+              <div class="chart-bar" style="--height: 40%"><span>{{ t('dayMon') }}</span></div>
+              <div class="chart-bar" style="--height: 55%"><span>{{ t('dayTue') }}</span></div>
+              <div class="chart-bar" style="--height: 85%"><span>{{ t('dayWed') }}</span></div>
+              <div class="chart-bar" style="--height: 60%"><span>{{ t('dayThu') }}</span></div>
+              <div class="chart-bar highlight" style="--height: 95%"><span>{{ t('dayFri') }}</span></div>
+              <div class="chart-bar" style="--height: 70%"><span>{{ t('daySat') }}</span></div>
+              <div class="chart-bar" style="--height: 50%"><span>{{ t('daySun') }}</span></div>
             </div>
           </div>
         </div>
 
         <!-- SECTION: PROFILE CONFIG -->
         <div v-else-if="activeSection === 'profile'" class="workspace-section text-left">
-          <h2>Edit Profile Context</h2>
-          <p class="section-subtitle">Change bio and information displayed on the home page.</p>
+          <h2>{{ t('dashProfileEditTitle') }}</h2>
+          <p class="section-subtitle">{{ t('dashProfileEditSubtitle') }}</p>
+
+          <!-- Language Selector for Localized Inputs -->
+          <div class="edit-lang-tabs">
+            <button type="button" @click="editLang = 'en'" :class="['edit-lang-btn', { active: editLang === 'en' }]">English (EN)</button>
+            <button type="button" @click="editLang = 'id'" :class="['edit-lang-btn', { active: editLang === 'id' }]">Indonesian (ID)</button>
+          </div>
           
           <form @submit.prevent="saveProfile" class="dashboard-form">
             <div class="form-row-2">
               <div class="form-group">
-                <label>Name</label>
+                <label>{{ t('dashProfileName') }}</label>
                 <input type="text" v-model="profileForm.name" class="form-input" required />
               </div>
               <div class="form-group">
-                <label>Job Title</label>
-                <input type="text" v-model="profileForm.title" class="form-input" required />
+                <label>{{ t('dashProfileJobTitle') }} ({{ editLang.toUpperCase() }})</label>
+                <input type="text" v-model="profileForm['title_' + editLang]" class="form-input" required />
               </div>
             </div>
 
             <div class="form-row-2">
               <div class="form-group">
-                <label>Email Address</label>
+                <label>{{ t('loginEmail') }}</label>
                 <input type="email" v-model="profileForm.email" class="form-input" required />
               </div>
               <div class="form-group">
-                <label>Phone / WhatsApp</label>
+                <label>{{ t('contactCallWa') }}</label>
                 <input type="text" v-model="profileForm.phone" class="form-input" required />
               </div>
             </div>
 
             <div class="form-row-2">
               <div class="form-group">
-                <label>Location (City)</label>
+                <label>{{ t('dashProfileLocation') }}</label>
                 <input type="text" v-model="profileForm.location" class="form-input" required />
               </div>
               <div class="form-group">
-                <label>LinkedIn Link</label>
+                <label>{{ t('dashProfileLinkedin') }}</label>
                 <input type="text" v-model="profileForm.linkedin" class="form-input" />
               </div>
             </div>
 
             <div class="form-group">
-              <label>Hero Summary Bio (Short)</label>
-              <textarea v-model="profileForm.bio" rows="2" class="form-input" required></textarea>
+              <label>{{ t('dashProfileBio') }} (Short - {{ editLang.toUpperCase() }})</label>
+              <textarea v-model="profileForm['bio_' + editLang]" rows="2" class="form-input" required></textarea>
             </div>
 
             <div class="form-group">
-              <label>About Paragraph (Long)</label>
-              <textarea v-model="profileForm.aboutText" rows="4" class="form-input" required></textarea>
+              <label>{{ t('dashProfileAbout') }} (Long - {{ editLang.toUpperCase() }})</label>
+              <textarea v-model="profileForm['aboutText_' + editLang]" rows="4" class="form-input" required></textarea>
             </div>
 
             <button type="submit" class="btn-primary">
-              <Save :size="16" /> Save Profile Details
+              <Save :size="16" /> {{ t('dashProfileSaveBtn') }}
             </button>
           </form>
         </div>
 
         <!-- SECTION: PROJECTS CRUD -->
         <div v-else-if="activeSection === 'projects'" class="workspace-section text-left">
-          <h2>Projects CRUD Panel</h2>
-          <p class="section-subtitle">Add, edit, or remove entries in the portfolio catalog.</p>
+          <h2>{{ t('dashProjPanelTitle') }}</h2>
+          <p class="section-subtitle">{{ t('dashProjPanelSubtitle') }}</p>
           
           <div class="crud-split">
             <!-- Left: Add/Edit Form -->
             <div class="crud-form-side glass-card">
-              <h3>{{ editingProjectId ? 'Edit Project' : 'Add New Project' }}</h3>
+              <h3>{{ editingProjectId ? t('dashProjEdit') : t('dashProjAdd') }}</h3>
               <form @submit.prevent="saveProject" class="dashboard-form">
                 <div class="form-group">
-                  <label>Project Title *</label>
-                  <input type="text" v-model="projectForm.title" class="form-input" placeholder="e.g. Courier Tracker" required />
+                  <label>{{ t('dashProjTitle') }} *</label>
+                  <input type="text" v-model="projectForm.title" class="form-input" :placeholder="t('dashProjTitlePlaceholder')" required />
                 </div>
 
                 <div class="form-row-2">
                   <div class="form-group">
-                    <label>Category</label>
+                    <label>{{ t('dashProjCat') }}</label>
                     <select v-model="projectForm.category" class="form-input">
-                      <option value="Web">Web App</option>
-                      <option value="Mobile">Mobile App</option>
-                      <option value="API">Backend / API</option>
+                      <option value="Web">{{ t('dashProjCatWeb') }}</option>
+                      <option value="Mobile">{{ t('dashProjCatMobile') }}</option>
+                      <option value="API">{{ t('dashProjCatApi') }}</option>
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Demo Link</label>
-                    <input type="text" v-model="projectForm.link" class="form-input" placeholder="GitHub URL" />
+                    <label>{{ t('dashProjLink') }}</label>
+                    <input type="text" v-model="projectForm.link" class="form-input" :placeholder="t('dashProjLinkPlaceholder')" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label>Tech Tags (Comma separated) *</label>
-                  <input type="text" v-model="projectForm.tags" class="form-input" placeholder="Vue, Node.js, Express" required />
+                  <label>{{ t('dashProjTags') }} *</label>
+                  <input type="text" v-model="projectForm.tags" class="form-input" :placeholder="t('dashProjTagsPlaceholder')" required />
                 </div>
 
                 <div class="form-group">
-                  <label>Cover Image URL</label>
-                  <input type="text" v-model="projectForm.image" class="form-input" placeholder="https://unsplash..." />
+                  <label>{{ t('dashProjImage') }}</label>
+                  <input type="text" v-model="projectForm.image" class="form-input" :placeholder="t('dashProjImagePlaceholder')" />
                 </div>
 
                 <div class="form-group">
-                  <label>Description *</label>
-                  <textarea v-model="projectForm.description" rows="3" class="form-input" placeholder="Describe what the application does..." required></textarea>
+                  <label>{{ t('dashProjDesc') }} (English) *</label>
+                  <textarea v-model="projectForm.description_en" rows="3" class="form-input" :placeholder="t('dashProjDesc') + ' (English)'" required></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label>{{ t('dashProjDesc') }} (Indonesian) *</label>
+                  <textarea v-model="projectForm.description_id" rows="3" class="form-input" :placeholder="t('dashProjDesc') + ' (Indonesian)'" required></textarea>
                 </div>
 
                 <div class="crud-actions">
                   <button type="submit" class="btn-primary">
                     <Plus v-if="!editingProjectId" :size="16" />
                     <Save v-else :size="16" />
-                    {{ editingProjectId ? 'Update Project' : 'Add Project' }}
+                    {{ editingProjectId ? t('dashProjUpdateBtn') : t('dashProjAddBtn') }}
                   </button>
                   <button 
                     v-if="editingProjectId" 
@@ -463,7 +483,7 @@ const syncJsonText = () => {
                     @click="resetProjectForm" 
                     class="btn-secondary"
                   >
-                    Cancel
+                    {{ t('dashBtnCancel') }}
                   </button>
                 </div>
               </form>
@@ -471,19 +491,19 @@ const syncJsonText = () => {
 
             <!-- Right: List with actions -->
             <div class="crud-list-side">
-              <h3>Active Project Entries</h3>
+              <h3>{{ t('dashProjActiveEntries') }}</h3>
               <div class="projects-list-scroll">
                 <div v-for="proj in data.projects" :key="proj.id" class="list-item-card glass-card">
                   <div class="list-item-info">
                     <span class="badge text-accent">{{ proj.category }}</span>
                     <h4>{{ proj.title }}</h4>
-                    <p>{{ proj.description.substring(0, 70) }}...</p>
+                    <p>{{ val(proj, 'description').substring(0, 70) }}...</p>
                   </div>
                   <div class="list-item-actions">
-                    <button @click="startEditProject(proj)" class="action-btn edit" title="Edit">
+                    <button @click="startEditProject(proj)" class="action-btn edit" :title="t('dashBtnEdit')">
                       <Edit3 :size="14" />
                     </button>
-                    <button @click="deleteProject(proj.id)" class="action-btn delete" title="Delete">
+                    <button @click="deleteProject(proj.id)" class="action-btn delete" :title="t('dashBtnDelete')">
                       <Trash2 :size="14" />
                     </button>
                   </div>
@@ -495,49 +515,49 @@ const syncJsonText = () => {
 
         <!-- SECTION: SKILLS MANAGER -->
         <div v-else-if="activeSection === 'skills'" class="workspace-section text-left">
-          <h2>Skills Manager</h2>
-          <p class="section-subtitle">Maintain your technical toolkit categories and progress ratings.</p>
+          <h2>{{ t('dashTabsSkills') }}</h2>
+          <p class="section-subtitle">{{ t('dashSkillsSubtitle') }}</p>
           
           <div class="crud-split">
             <!-- Left: Add Skill Form -->
             <div class="crud-form-side glass-card">
-              <h3>Add Skill</h3>
+              <h3>{{ t('dashSkillsAddTitle') }}</h3>
               <form @submit.prevent="addSkill" class="dashboard-form">
                 <div class="form-group">
-                  <label>Category Group</label>
+                  <label>{{ t('dashSkillsCatGroup') }}</label>
                   <select v-model="newSkill.categoryIdx" class="form-input">
                     <option v-for="(cat, idx) in data.skills" :key="idx" :value="idx">
-                      {{ cat.category }}
+                      {{ val(cat, 'category') }}
                     </option>
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <label>Skill Name</label>
+                  <label>{{ t('dashSkillsName') }}</label>
                   <input type="text" v-model="newSkill.name" placeholder="e.g. TypeScript" class="form-input" required />
                 </div>
 
                 <div class="form-group">
-                  <label>Proficiency Level ({{ newSkill.level }}%)</label>
+                  <label>{{ t('dashSkillsLevel') }} ({{ newSkill.level }}%)</label>
                   <input type="range" min="10" max="100" v-model="newSkill.level" class="form-range" />
                 </div>
 
                 <button type="submit" class="btn-primary">
-                  <Plus :size="16" /> Add Skill Tag
+                  <Plus :size="16" /> {{ t('dashSkillsAddBtn') }}
                 </button>
               </form>
             </div>
 
             <!-- Right: List by Category -->
             <div class="crud-list-side">
-              <h3>Active Skills</h3>
+              <h3>{{ t('dashSkillsActiveTitle') }}</h3>
               <div class="skills-manager-scroll">
                 <div v-for="(cat, cIdx) in data.skills" :key="cIdx" class="skills-category-group">
-                  <h4>{{ cat.category }}</h4>
+                  <h4>{{ val(cat, 'category') }}</h4>
                   <div class="manager-skills-list">
                     <span v-for="(skill, sIdx) in cat.items" :key="sIdx" class="manager-skill-badge badge">
                       {{ skill.name }} ({{ skill.level }}%)
-                      <button @click="deleteSkill(cIdx, sIdx)" class="delete-skill-tag" title="Remove">
+                      <button @click="deleteSkill(cIdx, sIdx)" class="delete-skill-tag" :title="t('dashBtnRemove')">
                         <X :size="12" />
                       </button>
                     </span>
@@ -550,8 +570,8 @@ const syncJsonText = () => {
 
         <!-- SECTION: INBOX -->
         <div v-else-if="activeSection === 'inbox'" class="workspace-section text-left">
-          <h2>Message Inbox</h2>
-          <p class="section-subtitle">Review submission logs generated via the public contact forms.</p>
+          <h2>{{ t('dashTabsInbox') }}</h2>
+          <p class="section-subtitle">{{ t('dashInboxSubtitle') }}</p>
           
           <div class="inbox-layout" v-if="messages.length > 0">
             <!-- Messages List -->
@@ -573,14 +593,14 @@ const syncJsonText = () => {
                     <button 
                       @click="toggleMessageRead(msg.id)" 
                       class="msg-action-btn"
-                      :title="msg.read ? 'Mark as Unread' : 'Mark as Read'"
+                      :title="msg.read ? t('dashInboxMarkUnread') : t('dashInboxMarkRead')"
                     >
                       <CheckCircle :size="14" :class="{ 'text-accent': msg.read }" />
                     </button>
-                    <button @click="openReplyModal(msg)" class="msg-action-btn reply" title="Reply (Mock)">
-                      <ChevronRight :size="14" /> Reply
+                    <button @click="openReplyModal(msg)" class="msg-action-btn reply" :title="t('dashInboxReply') + ' (Mock)'">
+                      <ChevronRight :size="14" /> {{ t('dashInboxReply') }}
                     </button>
-                    <button @click="deleteMessage(msg.id)" class="msg-action-btn delete" title="Delete">
+                    <button @click="deleteMessage(msg.id)" class="msg-action-btn delete" :title="t('dashBtnDelete')">
                       <Trash2 :size="14" />
                     </button>
                   </div>
@@ -590,14 +610,14 @@ const syncJsonText = () => {
           </div>
           <div v-else class="empty-inbox glass-card">
             <MessageSquare :size="48" class="text-muted" />
-            <p>Your inbox is empty. Contact submissions will appear here!</p>
+            <p>{{ t('dashInboxEmptyMsg') }}</p>
           </div>
         </div>
 
         <!-- SECTION: RAW JSON DIRECT EDIT -->
         <div v-else-if="activeSection === 'json'" class="workspace-section text-left">
-          <h2>Raw JSON Configuration</h2>
-          <p class="section-subtitle">Read and update your profile details using raw JSON. Export or copy-paste your database state directly.</p>
+          <h2>{{ t('dashTabsRaw') }}</h2>
+          <p class="section-subtitle">{{ t('dashRawSubtitle') }}</p>
           
           <div class="json-editor-container">
             <textarea 
@@ -609,12 +629,12 @@ const syncJsonText = () => {
             
             <div class="json-actions">
               <button @click="saveRawJson" class="btn-primary">
-                <Save :size="16" /> Validate & Apply Config
+                <Save :size="16" /> {{ t('dashRawApplyBtn') }}
               </button>
               
               <transition name="status-fade">
                 <div v-if="jsonSuccess" class="json-status success">
-                  <CheckCircle :size="16" /> Verified & Saved!
+                  <CheckCircle :size="16" /> {{ t('dashRawSuccessMsg') }}
                 </div>
                 <div v-else-if="jsonError" class="json-status error">
                   <AlertCircle :size="16" /> {{ jsonError }}
@@ -632,21 +652,21 @@ const syncJsonText = () => {
       <div v-if="replyingMessage" class="modal-overlay">
         <div class="reply-modal glass-card">
           <div class="modal-header">
-            <h3>Reply to {{ replyingMessage.name }}</h3>
+            <h3>{{ t('dashInboxReplyTo') }} {{ replyingMessage.name }}</h3>
             <button @click="replyingMessage = null" class="close-btn"><X :size="18" /></button>
           </div>
           <div class="modal-body">
             <div class="original-msg">
-              <strong>Original Message:</strong>
+              <strong>{{ t('dashInboxOriginal') }}</strong>
               <p>"{{ replyingMessage.message }}"</p>
             </div>
             
             <div class="form-group text-left">
-              <label>Your Response (Mock email dispatch)</label>
+              <label>{{ t('dashInboxOriginal') }}</label>
               <textarea 
                 v-model="replyText" 
                 rows="5" 
-                placeholder="Hi, thanks for reaching out..."
+                :placeholder="t('dashInboxPlaceholderReply')"
                 class="form-input"
               ></textarea>
             </div>
@@ -657,12 +677,12 @@ const syncJsonText = () => {
                 class="btn-primary"
                 :disabled="isReplying || !replyText.trim()"
               >
-                <span v-if="!isReplying">Send Email Reply</span>
-                <span v-else>Simulating SMTP Send...</span>
+                <span v-if="!isReplying">{{ t('dashInboxSendReply') }}</span>
+                <span v-else>{{ t('dashInboxSending') }}</span>
               </button>
               
               <div v-if="replySuccess" class="reply-success-alert text-accent">
-                <CheckCircle :size="16" /> Response successfully simulated!
+                <CheckCircle :size="16" /> {{ t('dashInboxSendSuccess') }}
               </div>
             </div>
           </div>
@@ -1319,5 +1339,40 @@ const syncJsonText = () => {
   .crud-split {
     grid-template-columns: 1fr;
   }
+}
+/* Language Selector tabs in Edit Profile */
+.edit-lang-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 6px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.edit-lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.edit-lang-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.edit-lang-btn.active {
+  color: var(--bg-dark);
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(181, 255, 43, 0.3);
 }
 </style>

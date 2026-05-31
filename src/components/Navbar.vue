@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { Menu, X, LayoutDashboard, Home, User, Briefcase, Code, MessageSquare } from '@lucide/vue'
+import { t, currentLocale, setLocale } from '../i18n.js'
 
 const props = defineProps({
   activePage: {
@@ -52,11 +53,11 @@ const navigateTo = (pageId) => {
 
       <!-- Desktop Nav Links -->
       <div class="nav-links-desktop" v-if="activePage !== 'dashboard'">
-        <a href="#home" @click.prevent="navigateTo('home')" :class="{ active: activePage === 'home' }">Home</a>
-        <a href="#about" @click.prevent="navigateTo('about')" :class="{ active: activePage === 'about' }">About</a>
-        <a href="#services" @click.prevent="navigateTo('services')" :class="{ active: activePage === 'services' }">Services</a>
-        <a href="#projects" @click.prevent="navigateTo('projects')" :class="{ active: activePage === 'projects' }">Projects</a>
-        <a href="#contact" @click.prevent="navigateTo('contact')" :class="{ active: activePage === 'contact' }">Contact</a>
+        <a href="#home" @click.prevent="navigateTo('home')" :class="{ active: activePage === 'home' }">{{ t('navHome') }}</a>
+        <a href="#about" @click.prevent="navigateTo('about')" :class="{ active: activePage === 'about' }">{{ t('navAbout') }}</a>
+        <a href="#services" @click.prevent="navigateTo('services')" :class="{ active: activePage === 'services' }">{{ t('navServices') }}</a>
+        <a href="#projects" @click.prevent="navigateTo('projects')" :class="{ active: activePage === 'projects' }">{{ t('navProjects') }}</a>
+        <a href="#contact" @click.prevent="navigateTo('contact')" :class="{ active: activePage === 'contact' }">{{ t('navContact') }}</a>
       </div>
 
       <!-- Exit Dashboard / Mobile Actions -->
@@ -67,8 +68,25 @@ const navigateTo = (pageId) => {
           class="exit-dashboard-btn"
         >
           <Home :size="16" />
-          <span>Back to Site</span>
+          <span>{{ t('dashBack') }}</span>
         </button>
+
+        <!-- Desktop Language Toggle -->
+        <div v-if="activePage !== 'dashboard'" class="lang-selector-desktop">
+          <div class="lang-selector">
+            <button 
+              @click="setLocale('en')" 
+              :class="['lang-btn', { active: currentLocale === 'en' }]"
+              aria-label="Switch to English"
+            >EN</button>
+            <span class="lang-divider">|</span>
+            <button 
+              @click="setLocale('id')" 
+              :class="['lang-btn', { active: currentLocale === 'id' }]"
+              aria-label="Switch to Indonesian"
+            >ID</button>
+          </div>
+        </div>
         
         <button 
           v-if="activePage !== 'dashboard'"
@@ -86,20 +104,35 @@ const navigateTo = (pageId) => {
     <transition name="fade">
       <div class="mobile-menu glass-card" v-if="isMobileMenuOpen && activePage !== 'dashboard'">
         <a href="#home" @click.prevent="navigateTo('home')" :class="{ active: activePage === 'home' }">
-          <Home :size="18" /> Home
+          <Home :size="18" /> {{ t('navHome') }}
         </a>
         <a href="#about" @click.prevent="navigateTo('about')" :class="{ active: activePage === 'about' }">
-          <User :size="18" /> About
+          <User :size="18" /> {{ t('navAbout') }}
         </a>
         <a href="#services" @click.prevent="navigateTo('services')" :class="{ active: activePage === 'services' }">
-          <Code :size="18" /> Services
+          <Code :size="18" /> {{ t('navServices') }}
         </a>
         <a href="#projects" @click.prevent="navigateTo('projects')" :class="{ active: activePage === 'projects' }">
-          <Briefcase :size="18" /> Projects
+          <Briefcase :size="18" /> {{ t('navProjects') }}
         </a>
         <a href="#contact" @click.prevent="navigateTo('contact')" :class="{ active: activePage === 'contact' }">
-          <MessageSquare :size="18" /> Contact
+          <MessageSquare :size="18" /> {{ t('navContact') }}
         </a>
+
+        <!-- Mobile Language Toggle -->
+        <div class="mobile-lang-selector">
+          <div class="lang-selector">
+            <button 
+              @click="setLocale('en')" 
+              :class="['lang-btn', { active: currentLocale === 'en' }]"
+            >EN</button>
+            <span class="lang-divider">|</span>
+            <button 
+              @click="setLocale('id')" 
+              :class="['lang-btn', { active: currentLocale === 'id' }]"
+            >ID</button>
+          </div>
+        </div>
       </div>
     </transition>
   </nav>
@@ -319,6 +352,10 @@ const navigateTo = (pageId) => {
     display: none;
   }
   
+  .lang-selector-desktop {
+    display: none;
+  }
+  
   .mobile-toggle {
     display: block;
   }
@@ -336,5 +373,56 @@ const navigateTo = (pageId) => {
     height: 38px;
     justify-content: center;
   }
+}
+
+/* i18n Styles */
+.lang-selector-desktop {
+  display: flex;
+  align-items: center;
+}
+
+.lang-selector {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 8px;
+  border-radius: 9999px;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  transition: var(--transition);
+}
+
+.lang-btn:hover {
+  color: var(--text-primary);
+}
+
+.lang-btn.active {
+  color: var(--bg-dark);
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(181, 255, 43, 0.3);
+}
+
+.lang-divider {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 11px;
+}
+
+.mobile-lang-selector {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 </style>

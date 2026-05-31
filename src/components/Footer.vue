@@ -1,5 +1,6 @@
 <script setup>
 import { Mail, ArrowUp } from '@lucide/vue'
+import { t } from '../i18n.js'
 
 const props = defineProps({
   data: {
@@ -23,11 +24,11 @@ const scrollToTop = () => {
         </div>
         
         <div class="footer-nav">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
+          <a href="#home">{{ t('navHome') }}</a>
+          <a href="#about">{{ t('navAbout') }}</a>
+          <a href="#services">{{ t('navServices') }}</a>
+          <a href="#projects">{{ t('navProjects') }}</a>
+          <a href="#contact">{{ t('navContact') }}</a>
         </div>
 
         <button @click="scrollToTop" class="back-to-top" aria-label="Back to top">
@@ -39,7 +40,7 @@ const scrollToTop = () => {
 
       <div class="footer-bottom">
         <p class="copyright">
-          &copy; {{ new Date().getFullYear() }} Dary Mahdi. Built with Vue 3 & Vite.
+          &copy; {{ new Date().getFullYear() }} Dary Mahdi. {{ t('footerRights') }}
         </p>
 
         <div class="social-links">

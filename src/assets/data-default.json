@@ -1,15 +1,18 @@
 {
   "personal": {
     "name": "Dary Mahdi",
-    "title": "Full-Stack & Mobile Developer",
+    "title_en": "Full-Stack & Mobile Developer",
+    "title_id": "Full-Stack & Mobile Developer",
     "email": "darmah250903@gmail.com",
     "phone": "+6281357646859",
     "location": "Surabaya, Indonesia",
     "address": "DK. Bulak Banteng Pratama 4 No 19, Surabaya, Indonesia",
     "linkedin": "https://www.linkedin.com/in/darymahdi",
-    "github": "https://github.com/",
-    "bio": "Passionate software developer with a strong foundation in programming and application development. Extensive knowledge of programming languages such as Dart, PHP, CSS, and JavaScript, and proficient in utilizing various frameworks and development tools.",
-    "aboutText": "I am a Full-Stack and Mobile Developer based in Surabaya, Indonesia. With over 3 years of hands-on experience in building scalable web applications and high-performance mobile apps, I enjoy solving complex problems and turning ideas into responsive digital solutions. I am constantly learning new technologies and improving my skills to deliver state-of-the-art products.",
+    "github": "https://github.com/darymahdi",
+    "bio_en": "Passionate software developer with a strong foundation in programming and application development. Extensive knowledge of programming languages such as Dart, PHP, CSS, and JavaScript, and proficient in utilizing various frameworks and development tools.",
+    "bio_id": "Pengembang perangkat lunak yang berdedikasi dengan fondasi kuat dalam pemrograman dan pengembangan aplikasi. Memiliki pengetahuan luas tentang bahasa pemrograman seperti Dart, PHP, CSS, dan JavaScript, serta mahir dalam memanfaatkan berbagai kerangka kerja dan alat pengembangan.",
+    "aboutText_en": "I am a Full-Stack and Mobile Developer based in Surabaya, Indonesia. With over 3 years of hands-on experience in building scalable web applications and high-performance mobile apps, I enjoy solving complex problems and turning ideas into responsive digital solutions. I am constantly learning new technologies and improving my skills to deliver state-of-the-art products.",
+    "aboutText_id": "Saya adalah Full-Stack dan Mobile Developer yang berbasis di Surabaya, Indonesia. Dengan pengalaman praktis lebih dari 3 tahun dalam membangun aplikasi web yang skalabel dan aplikasi mobile berkinerja tinggi, saya senang memecahkan masalah kompleks dan mengubah ide menjadi solusi digital yang responsif. Saya terus mempelajari teknologi baru dan meningkatkan keahlian saya untuk menghadirkan produk mutakhir.",
     "stats": [
       { "label": "Years Experience", "value": "3+" },
       { "label": "Completed Projects", "value": "15+" },
@@ -19,7 +22,8 @@
   },
   "skills": [
     {
-      "category": "Programming Languages",
+      "category_en": "Programming Languages",
+      "category_id": "Bahasa Pemrograman",
       "items": [
         { "name": "PHP", "level": 90 },
         { "name": "JavaScript", "level": 85 },
@@ -29,7 +33,8 @@
       ]
     },
     {
-      "category": "Frameworks",
+      "category_en": "Frameworks",
+      "category_id": "Kerangka Kerja",
       "items": [
         { "name": "Laravel", "level": 90 },
         { "name": "Vue.js", "level": 85 },
@@ -40,7 +45,8 @@
       ]
     },
     {
-      "category": "Technologies & Tools",
+      "category_en": "Technologies & Tools",
+      "category_id": "Teknologi & Alat",
       "items": [
         { "name": "Rest API", "level": 95 },
         { "name": "HTML & CSS", "level": 90 },
@@ -50,7 +56,8 @@
       ]
     },
     {
-      "category": "Soft Skills",
+      "category_en": "Soft Skills",
+      "category_id": "Keahlian Interpersonal",
       "items": [
         { "name": "Problem Solving", "level": 90 },
         { "name": "Team Collaboration", "level": 95 },
@@ -65,63 +72,87 @@
     {
       "company": "PT. SAI Trans Indonesia",
       "location": "Jakarta, Indonesia (Remote)",
-      "role": "Fullstack Developer",
+      "role_en": "Fullstack Developer",
+      "role_id": "Fullstack Developer",
       "period": "Agt 2023 - Present",
-      "bullets": [
+      "bullets_en": [
         "Lead the design, development, and maintenance of internal applications, including the Logistic Management System (LMS), optimizing operational efficiency.",
         "Developed and managed mobile applications (iOS & Android) for logistics operations using Laravel, Vue, Node.js, and Flutter, enhancing functionality and user engagement.",
         "Collaborated with cross-functional teams to ensure a reliable and scalable application infrastructure, resulting in a 30% reduction in operational delays."
+      ],
+      "bullets_id": [
+        "Memimpin desain, pengembangan, dan pemeliharaan aplikasi internal, termasuk Logistic Management System (LMS), mengoptimalkan efisiensi operasional.",
+        "Mengembangkan dan mengelola aplikasi mobile (iOS & Android) untuk operasi logistik menggunakan Laravel, Vue, Node.js, dan Flutter, meningkatkan fungsionalitas dan interaksi pengguna.",
+        "Berkolaborasi dengan tim lintas fungsi untuk memastikan infrastruktur aplikasi yang andal dan skalabel, menghasilkan pengurangan keterlambatan operasional sebesar 30%."
       ]
     },
     {
       "company": "CV. Mcflyon Teknologi Indonesia",
       "location": "Surabaya, Indonesia",
-      "role": "Junior Software Developer",
+      "role_en": "Junior Software Developer",
+      "role_id": "Developer Perangkat Lunak Junior",
       "period": "Agt 2022 - Agt 2023",
-      "bullets": [
+      "bullets_en": [
         "Designed and maintained responsive websites and applications, working with technologies such as HTML, CSS, and JavaScript.",
         "Developed front-end and back-end functionalities using frameworks like Node, React, Vue, Flutter, and Laravel, achieving faster and more efficient project deployment.",
         "Enhanced application responsiveness and user interface, ensuring a positive and seamless user experience."
+      ],
+      "bullets_id": [
+        "Mendesain dan memelihara situs web serta aplikasi yang responsif, bekerja dengan teknologi seperti HTML, CSS, dan JavaScript.",
+        "Mengembangkan fungsionalitas front-end dan back-end menggunakan kerangka kerja seperti Node, React, Vue, Flutter, dan Laravel, mencapai penyebaran proyek yang lebih cepat dan efisien.",
+        "Meningkatkan responsivitas aplikasi dan antarmuka pengguna, memastikan pengalaman pengguna yang positif dan mulus."
       ]
     },
     {
       "company": "CV. Mcflyon Teknologi Indonesia",
       "location": "Surabaya, Indonesia",
-      "role": "Web Developer (Intern)",
+      "role_en": "Web Developer (Intern)",
+      "role_id": "Developer Web (Magang)",
       "period": "Jan 2021 - Jun 2021",
-      "bullets": [
+      "bullets_en": [
         "Assisted in the development and maintenance of applications to meet user preferences, utilizing Laravel and Vue.js.",
         "Supported the implementation of user-centered features, improving overall application satisfaction and usability for clients."
+      ],
+      "bullets_id": [
+        "Membantu dalam pengembangan dan pemeliharaan aplikasi untuk memenuhi preferensi pengguna, menggunakan Laravel dan Vue.js.",
+        "Mendukung penerapan fitur yang berpusat pada pengguna, meningkatkan kepuasan keseluruhan aplikasi dan kegunaan bagi klien."
       ]
     }
   ],
   "education": [
     {
       "school": "Universitas Insan Cita Indonesia",
-      "degree": "Bachelor's in Informatics (SEMESTA Scholarship)",
+      "degree_en": "Bachelor's in Informatics (SEMESTA Scholarship)",
+      "degree_id": "Sarjana Informatika (Beasiswa SEMESTA)",
       "period": "Agt 2022 - Apr 2026 (7 Semester)",
-      "details": "IPK: 3.67 / 4.00"
+      "details_en": "GPA: 3.67 / 4.00",
+      "details_id": "IPK: 3,67 / 4,00"
     },
     {
       "school": "SMKN NEGERI 2 SURABAYA",
-      "degree": "Rekayasa Perangkat Lunak (Software Engineering)",
+      "degree_en": "Software Engineering",
+      "degree_id": "Rekayasa Perangkat Lunak",
       "period": "2019 - 2022",
-      "details": "Learned fundamental coding, software databases, and algorithmic logic."
+      "details_en": "Learned fundamental coding, software databases, and algorithmic logic.",
+      "details_id": "Mempelajari pengodean dasar, basis data perangkat lunak, dan logika algoritma."
     }
   ],
   "certifications": [
     {
-      "title": "Junior Web Developer",
+      "title_en": "Junior Web Developer",
+      "title_id": "Developer Web Junior",
       "issuer": "BNSP",
       "period": "2023 - 2026"
     },
     {
-      "title": "Rest API (Intermediate)",
+      "title_en": "Rest API (Intermediate)",
+      "title_id": "Rest API (Menengah)",
       "issuer": "HackerRank",
       "period": "2024"
     },
     {
-      "title": "SQL (Intermediate)",
+      "title_en": "SQL (Intermediate)",
+      "title_id": "SQL (Menengah)",
       "issuer": "HackerRank",
       "period": "2024"
     }
@@ -133,30 +164,39 @@
   "services": [
     {
       "icon": "Code",
-      "title": "Fullstack Web Dev",
-      "description": "Building high-performance, responsive web applications using Laravel, Node.js, and Vue.js. Clean code and optimized database structures."
+      "title_en": "Fullstack Web Dev",
+      "title_id": "Pengembangan Web Fullstack",
+      "description_en": "Building high-performance, responsive web applications using Laravel, Node.js, and Vue.js. Clean code and optimized database structures.",
+      "description_id": "Membangun aplikasi web yang responsif dan berkinerja tinggi menggunakan Laravel, Node.js, dan Vue.js. Kode bersih dan struktur basis data yang dioptimalkan."
     },
     {
       "icon": "Smartphone",
-      "title": "Mobile App Dev",
-      "description": "Crafting cross-platform native iOS & Android applications using Flutter, complete with local state management, background sync, and offline support."
+      "title_en": "Mobile App Dev",
+      "title_id": "Pengembangan Aplikasi Mobile",
+      "description_en": "Crafting cross-platform native iOS & Android applications using Flutter, complete with local state management, background sync, and offline support.",
+      "description_id": "Membuat aplikasi native lintas platform iOS & Android menggunakan Flutter, lengkap dengan manajemen status lokal, sinkronisasi latar belakang, dan dukungan luring."
     },
     {
       "icon": "Cpu",
-      "title": "Backend API Engineering",
-      "description": "Designing secure, standard REST APIs and microservices using Express, Gin (Go), and Laravel. Scalable structures with comprehensive docs."
+      "title_en": "Backend API Engineering",
+      "title_id": "Rekayasa API Backend",
+      "description_en": "Designing secure, standard REST APIs and microservices using Express, Gin (Go), and Laravel. Scalable structures with comprehensive docs.",
+      "description_id": "Mendesain API REST dan layanan mikro yang aman dan berstandar menggunakan Express, Gin (Go), dan Laravel. Struktur yang dapat diskalakan dengan dokumentasi lengkap."
     },
     {
       "icon": "Activity",
-      "title": "Logistic Systems (LMS)",
-      "description": "Specialized in creating Logistic Management Systems, route optimizations, operational delay reductions, and dashboard analytics tracking."
+      "title_en": "Logistic Systems (LMS)",
+      "title_id": "Sistem Logistik (LMS)",
+      "description_en": "Specialized in creating Logistic Management Systems, route optimizations, operational delay reductions, and dashboard analytics tracking.",
+      "description_id": "Spesialisasi dalam pembuatan Sistem Manajemen Logistik, optimalisasi rute, pengurangan keterlambatan operasional, dan pelacakan analitik dashboard."
     }
   ],
   "projects": [
     {
       "id": "1",
       "title": "BHE-GTK (Absensi Gresik)",
-      "description": "An employee attendance collection mobile application designed for the Education Office of Gresik Regency. Features geolocation checks and device lock verification.",
+      "description_en": "An employee attendance collection mobile application designed for the Education Office of Gresik Regency. Features geolocation checks and device lock verification.",
+      "description_id": "Aplikasi mobile pengumpulan absensi karyawan yang dirancang untuk Dinas Pendidikan Kabupaten Gresik. Menampilkan pemeriksaan geolokasi dan verifikasi kunci perangkat.",
       "category": "Mobile",
       "tags": ["Flutter", "Dart", "Rest API", "Android"],
       "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=600",
@@ -165,7 +205,8 @@
     {
       "id": "2",
       "title": "SIKARESOI - BAROMBONG",
-      "description": "Cascading Information System for Optimal and Integral Remuneration management, tailored for employees and lecturers of Poltekpel Barombong.",
+      "description_en": "Cascading Information System for Optimal and Integral Remuneration management, tailored for employees and lecturers of Poltekpel Barombong.",
+      "description_id": "Sistem Informasi Remunerasi Berjenjang yang Optimal dan Integral, disesuaikan untuk pegawai dan dosen Poltekpel Barombong.",
       "category": "Web",
       "tags": ["Laravel", "PHP", "JavaScript", "PostgreSQL"],
       "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=600",
@@ -174,7 +215,8 @@
     {
       "id": "3",
       "title": "E-TPP (Halmahera Timur)",
-      "description": "Employee Performance Evaluation and Additional Income Information System built for the regional government of Halmahera Timur.",
+      "description_en": "Employee Performance Evaluation and Additional Income Information System built for the regional government of Halmahera Timur.",
+      "description_id": "Sistem Informasi Penilaian Kinerja Pegawai dan Tambahan Penghasilan yang dibangun untuk pemerintah daerah Halmahera Timur.",
       "category": "Web",
       "tags": ["Vue.js", "Laravel", "PHP", "MySQL"],
       "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=600",
@@ -183,7 +225,8 @@
     {
       "id": "4",
       "title": "Simanis (Masyarakat Miskin)",
-      "description": "Information system to record conditions of families, housing infrastructure, and socio-economic aspects in Lamongan Regency to determine house habitability.",
+      "description_en": "Information system to record conditions of families, housing infrastructure, and socio-economic aspects in Lamongan Regency to determine house habitability.",
+      "description_id": "Sistem informasi untuk mencatat kondisi keluarga, infrastruktur perumahan, dan aspek sosial-ekonomi di Kabupaten Lamongan untuk menentukan kelayakan huni rumah.",
       "category": "Web",
       "tags": ["Vue.js", "Laravel", "PHP", "MySQL"],
       "image": "https://images.unsplash.com/photo-1518364538800-6bcb3f25da49?auto=format&fit=crop&q=80&w=600",
@@ -192,7 +235,8 @@
     {
       "id": "5",
       "title": "BDC (Business Development Center)",
-      "description": "Enterprise-level portal for the Business Development Center of the Department of Cooperatives and Small Medium Enterprises of East Java Province.",
+      "description_en": "Enterprise-level portal for the Business Development Center of the Department of Cooperatives and Small Medium Enterprises of East Java Province.",
+      "description_id": "Portal tingkat enterprise untuk Business Development Center Dinas Koperasi dan Usaha Kecil Menengah Provinsi Jawa Timur.",
       "category": "Web",
       "tags": ["Laravel", "PHP", "JavaScript", "MySQL"],
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600",
@@ -201,7 +245,8 @@
     {
       "id": "6",
       "title": "Mbak ELSA (Lamongan)",
-      "description": "Government-level Performance Accountability System (PASGA) configured to track targets and accountability indicators for Lamongan Regency.",
+      "description_en": "Government-level Performance Accountability System (PASGA) configured to track targets and accountability indicators for Lamongan Regency.",
+      "description_id": "Sistem Akuntabilitas Kinerja Instansi Pemerintah (SAKIP) yang dikonfigurasi untuk melacak sasaran dan indikator akuntabilitas Kabupaten Lamongan.",
       "category": "Web",
       "tags": ["Laravel", "PHP", "MySQL"],
       "image": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&q=80&w=600",
@@ -210,7 +255,8 @@
     {
       "id": "7",
       "title": "Remun STTD (Bekasi)",
-      "description": "Cascading Information System for Optimal and Integral Remuneration tracking built for PTDI-STTD Bekasi to manage faculty benefits.",
+      "description_en": "Cascading Information System for Optimal and Integral Remuneration tracking built for PTDI-STTD Bekasi to manage faculty benefits.",
+      "description_id": "Sistem Informasi Pelacakan Remunerasi Berjenjang yang Optimal dan Integral yang dibangun untuk PTDI-STTD Bekasi untuk mengelola tunjangan dosen.",
       "category": "Web",
       "tags": ["Vue.js", "Laravel", "PostgreSQL"],
       "image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=600",
@@ -219,7 +265,8 @@
     {
       "id": "8",
       "title": "LMS (Logistic Management System)",
-      "description": "Robust internal logistics management suite built for PT. SAI Trans Indonesia to handle container manifest registry, export-import, and billing.",
+      "description_en": "Robust internal logistics management suite built for PT. SAI Trans Indonesia to handle container manifest registry, export-import, and billing.",
+      "description_id": "Sistem manajemen logistik internal yang tangguh yang dibangun untuk PT. SAI Trans Indonesia untuk menangani registrasi manifes kontainer, ekspor-impor, dan penagihan.",
       "category": "Web",
       "tags": ["Vue.js", "Laravel", "PostgreSQL"],
       "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=600",
@@ -228,7 +275,8 @@
     {
       "id": "9",
       "title": "SAITRANS Mobile App",
-      "description": "Dual-platform native app for freight coordinators and drivers to register shipping manifests, track deliveries, and manage export-import jobs.",
+      "description_en": "Dual-platform native app for freight coordinators and drivers to register shipping manifests, track deliveries, and manage export-import jobs.",
+      "description_id": "Aplikasi native lintas platform untuk koordinator kargo dan pengemudi untuk mendaftarkan manifes pengiriman, melacak pengiriman, dan mengelola pekerjaan ekspor-impor.",
       "category": "Mobile",
       "tags": ["Flutter", "Dart", "Node.js", "Rest API"],
       "image": "https://images.unsplash.com/photo-1516576880358-1f6f890c07d3?auto=format&fit=crop&q=80&w=600",
@@ -237,7 +285,8 @@
     {
       "id": "10",
       "title": "LOS (Logistic Operator System)",
-      "description": "Warehouse and yard operator utility app to monitor inbound, outbound, sorting, and scanning of cargo packages on mobile platforms.",
+      "description_en": "Warehouse and yard operator utility app to monitor inbound, outbound, sorting, and scanning of cargo packages on mobile platforms.",
+      "description_id": "Aplikasi utilitas operator gudang dan lapangan untuk memantau barang masuk, barang keluar, pemilahan, dan pemindaian paket kargo pada platform seluler.",
       "category": "Mobile",
       "tags": ["Flutter", "Dart", "Node.js"],
       "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600",
@@ -246,7 +295,8 @@
     {
       "id": "11",
       "title": "Courier Mobile Application",
-      "description": "Mobile application for tracking delivery items, dynamic route recommendations, signature verification, and delivery completion.",
+      "description_en": "Mobile application for tracking delivery items, dynamic route recommendations, signature verification, and delivery completion.",
+      "description_id": "Aplikasi seluler untuk melacak item pengiriman, rekomendasi rute dinamis, verifikasi tanda tangan, dan penyelesaian pengiriman.",
       "category": "Mobile",
       "tags": ["Flutter", "Dart", "Rest API"],
       "image": "https://images.unsplash.com/photo-1566576912321-d58ded7a214f?auto=format&fit=crop&q=80&w=600",
@@ -255,7 +305,8 @@
     {
       "id": "12",
       "title": "CRM (Customer Relations)",
-      "description": "Customer relationship management software built to log tickets, support inquiries, and customer communication pathways for PT. SAI Trans.",
+      "description_en": "Customer relationship management software built to log tickets, support inquiries, and customer communication pathways for PT. SAI Trans.",
+      "description_id": "Perangkat lunak manajemen hubungan pelanggan yang dibangun untuk mencatat tiket, pertanyaan dukungan, dan jalur komunikasi pelanggan untuk PT. SAI Trans.",
       "category": "Web",
       "tags": ["Vue.js", "Laravel", "MySQL"],
       "image": "https://images.unsplash.com/photo-1552581230-c01591d6f29a?auto=format&fit=crop&q=80&w=600",
@@ -264,7 +315,8 @@
     {
       "id": "13",
       "title": "SAITRANS Finance Panel",
-      "description": "Internal financial management system for handling corporate purchasing, product sales, general operating expenses, and staff payrolls.",
+      "description_en": "Internal financial management system for handling corporate purchasing, product sales, general operating expenses, and staff payrolls.",
+      "description_id": "Sistem manajemen keuangan internal untuk menangani pembelian korporat, penjualan produk, pengeluaran operasional umum, dan penggajian staf.",
       "category": "Web",
       "tags": ["Vue.js", "Laravel", "MySQL"],
       "image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=600",
@@ -273,7 +325,8 @@
     {
       "id": "14",
       "title": "Courier App Singapore (Mobile)",
-      "description": "Specialized logistics application designed to orchestrate and track courier deliveries within Singapore.",
+      "description_en": "Specialized logistics application designed to orchestrate and track courier deliveries within Singapore.",
+      "description_id": "Aplikasi logistik khusus yang dirancang untuk mengatur dan melacak pengiriman kurir di Singapura.",
       "category": "Mobile",
       "tags": ["Flutter", "Dart", "Rest API"],
       "image": "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&q=80&w=600",
@@ -282,7 +335,8 @@
     {
       "id": "15",
       "title": "HIMSI CENGKARENG Profile",
-      "description": "A responsive organization profile and portal for the Student Association of Informatics (HIMSI) Cengkareng.",
+      "description_en": "A responsive organization profile and portal for the Student Association of Informatics (HIMSI) Cengkareng.",
+      "description_id": "Profil organisasi dan portal responsif untuk Himpunan Mahasiswa Sistem Informasi (HIMSI) Cengkareng.",
       "category": "Web",
       "tags": ["Laravel", "PHP", "Tailwind CSS"],
       "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600",

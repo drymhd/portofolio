@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Code, Smartphone, Cpu, Activity } from '@lucide/vue'
+import { t, val } from '../i18n.js'
 
 const props = defineProps({
   data: {
@@ -28,8 +29,8 @@ const getIconComponent = (iconName) => {
     <div class="container">
       <!-- Section Header -->
       <div class="section-title-wrapper">
-        <span class="subtitle">Offerings</span>
-        <h2 class="section-title">My <span class="text-accent glow-text">Services</span></h2>
+        <span class="subtitle">{{ t('servicesSubtitle') }}</span>
+        <h2 class="section-title">{{ t('servicesTitlePart1') }} <span class="text-accent glow-text">{{ t('servicesTitlePart2') }}</span></h2>
         <div class="title-divider"></div>
       </div>
 
@@ -50,11 +51,11 @@ const getIconComponent = (iconName) => {
             <component :is="getIconComponent(service.icon)" :size="28" class="service-icon" />
           </div>
 
-          <h3 class="service-title">{{ service.title }}</h3>
-          <p class="service-desc">{{ service.description }}</p>
+          <h3 class="service-title">{{ val(service, 'title') }}</h3>
+          <p class="service-desc">{{ val(service, 'description') }}</p>
 
           <div class="service-footer">
-            <span class="learn-more">Details</span>
+            <span class="learn-more">{{ t('serviceDetails') }}</span>
             <div class="arrow-dot"></div>
           </div>
         </div>

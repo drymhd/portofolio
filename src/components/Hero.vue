@@ -1,5 +1,6 @@
 <script setup>
 import { ArrowRight, Download, Mail } from '@lucide/vue'
+import { t, val } from '../i18n.js'
 const avatarUrl = '/avatar.png'
 
 const props = defineProps({
@@ -15,6 +16,14 @@ const handleContactClick = () => {
     contactSection.scrollIntoView({ behavior: 'smooth' })
   }
 }
+
+const getStatLabel = (label) => {
+  if (label.includes('Experience')) return t('statExp')
+  if (label.includes('Projects')) return t('statProj')
+  if (label.includes('Stacks')) return t('statTech')
+  if (label.includes('Certifications')) return t('statCert')
+  return label
+}
 </script>
 
 <template>
@@ -29,24 +38,24 @@ const handleContactClick = () => {
         <div class="hero-content">
           <div class="badge-tag">
             <span class="pulse-dot"></span>
-            Available for Freelance & Full-time
+            {{ t('heroStatus') }}
           </div>
           
           <h1 class="hero-title">
-            Hi, I'm <span class="highlight-text">{{ data.personal.name }}</span>
-            <span class="role-text text-gradient">{{ data.personal.title }}</span>
+            {{ t('heroGreeting') }} <span class="highlight-text">{{ data.personal.name }}</span>
+            <span class="role-text text-gradient">{{ val(data.personal, 'title') }}</span>
           </h1>
           
           <p class="hero-description">
-            {{ data.personal.bio }}
+            {{ val(data.personal, 'bio') }}
           </p>
 
           <div class="hero-actions">
             <button @click="handleContactClick" class="btn-primary">
-              Let's Talk <ArrowRight :size="16" />
+              {{ t('heroContactMe') }} <ArrowRight :size="16" />
             </button>
             <a href="javascript:void(0)" class="btn-secondary">
-              Download CV <Download :size="16" />
+              {{ t('heroDownloadCV') }} <Download :size="16" />
             </a>
           </div>
 
@@ -79,7 +88,7 @@ const handleContactClick = () => {
       <div class="stats-bar glass-card">
         <div v-for="(stat, idx) in data.personal.stats" :key="idx" class="stat-item">
           <div class="stat-value text-accent glow-text">{{ stat.value }}</div>
-          <div class="stat-label">{{ stat.label }}</div>
+          <div class="stat-label">{{ getStatLabel(stat.label) }}</div>
         </div>
       </div>
     </div>

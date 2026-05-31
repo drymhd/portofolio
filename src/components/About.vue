@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Briefcase, GraduationCap, Award, Globe, CheckCircle2 } from '@lucide/vue'
+import { t, val } from '../i18n.js'
 
 const props = defineProps({
   data: {
@@ -17,8 +18,8 @@ const activeTab = ref('experience')
     <div class="container">
       <!-- Section Title -->
       <div class="section-title-wrapper">
-        <span class="subtitle">Biography</span>
-        <h2 class="section-title">About <span class="text-accent glow-text">Me</span></h2>
+        <span class="subtitle">{{ t('aboutSubtitle') }}</span>
+        <h2 class="section-title">{{ t('aboutMePart1') }} <span class="text-accent glow-text">{{ t('aboutMePart2') }}</span></h2>
         <div class="title-divider"></div>
       </div>
 
@@ -26,16 +27,16 @@ const activeTab = ref('experience')
         <!-- Left: Bio & Tech Skills -->
         <div class="about-left">
           <div class="bio-card glass-card">
-            <h3>Who is Dary Mahdi?</h3>
-            <p>{{ data.personal.aboutText }}</p>
+            <h3>{{ t('aboutWhoIs') }} Dary Mahdi?</h3>
+            <p>{{ val(data.personal, 'aboutText') }}</p>
           </div>
 
           <!-- Skills Cards -->
           <div class="skills-wrapper">
-            <h3>Technical Capabilities</h3>
+            <h3>{{ t('aboutTechCap') }}</h3>
             <div class="skills-categories">
               <div v-for="(cat, idx) in data.skills" :key="idx" class="skill-category-card glass-card">
-                <h4>{{ cat.category }}</h4>
+                <h4>{{ val(cat, 'category') }}</h4>
                 <div class="skill-list">
                   <div v-for="(skill, sIdx) in cat.items" :key="sIdx" class="skill-item">
                     <div class="skill-info">
@@ -59,19 +60,19 @@ const activeTab = ref('experience')
               @click="activeTab = 'experience'" 
               :class="['tab-btn', { active: activeTab === 'experience' }]"
             >
-              <Briefcase :size="16" /> Experience
+              <Briefcase :size="16" /> {{ t('aboutTabExp') }}
             </button>
             <button 
               @click="activeTab = 'education'" 
               :class="['tab-btn', { active: activeTab === 'education' }]"
             >
-              <GraduationCap :size="16" /> Education
+              <GraduationCap :size="16" /> {{ t('aboutTabEdu') }}
             </button>
             <button 
               @click="activeTab = 'certifications'" 
               :class="['tab-btn', { active: activeTab === 'certifications' }]"
             >
-              <Award :size="16" /> Credentials
+              <Award :size="16" /> {{ t('aboutTabCreds') }}
             </button>
           </div>
 
@@ -85,10 +86,10 @@ const activeTab = ref('experience')
                   <span class="timeline-period">{{ job.period }}</span>
                   <span class="timeline-location">{{ job.location }}</span>
                 </div>
-                <h4 class="timeline-role">{{ job.role }}</h4>
+                <h4 class="timeline-role">{{ val(job, 'role') }}</h4>
                 <h5 class="timeline-company">{{ job.company }}</h5>
                 <ul class="timeline-details">
-                  <li v-for="(bullet, bIdx) in job.bullets" :key="bIdx">
+                  <li v-for="(bullet, bIdx) in val(job, 'bullets')" :key="bIdx">
                     <CheckCircle2 :size="12" class="bullet-icon text-accent" />
                     <span>{{ bullet }}</span>
                   </li>
@@ -105,8 +106,8 @@ const activeTab = ref('experience')
                 <div class="edu-info">
                   <span class="edu-period">{{ edu.period }}</span>
                   <h4 class="edu-school">{{ edu.school }}</h4>
-                  <p class="edu-degree">{{ edu.degree }}</p>
-                  <span v-if="edu.details" class="edu-gpa badge">{{ edu.details }}</span>
+                  <p class="edu-degree">{{ val(edu, 'degree') }}</p>
+                  <span v-if="edu.details" class="edu-gpa badge">{{ val(edu, 'details') }}</span>
                 </div>
               </div>
             </div>
@@ -114,12 +115,12 @@ const activeTab = ref('experience')
             <!-- Certifications & Languages -->
             <div v-if="activeTab === 'certifications'" class="cert-lang-container">
               <div class="cert-section">
-                <h4>Certifications</h4>
+                <h4>{{ t('aboutCert') }}</h4>
                 <div class="cert-grid">
                   <div v-for="(cert, idx) in data.certifications" :key="idx" class="cert-card glass-card">
                     <Award :size="20" class="text-accent cert-icon" />
                     <div>
-                      <h5>{{ cert.title }}</h5>
+                      <h5>{{ val(cert, 'title') }}</h5>
                       <p>{{ cert.issuer }} <span v-if="cert.period">• {{ cert.period }}</span></p>
                     </div>
                   </div>
@@ -127,7 +128,7 @@ const activeTab = ref('experience')
               </div>
 
               <div class="lang-section glass-card">
-                <h4><Globe :size="18" class="text-accent" /> Languages</h4>
+                <h4><Globe :size="18" class="text-accent" /> {{ t('aboutLangs') }}</h4>
                 <div class="lang-grid">
                   <div v-for="(lang, idx) in data.languages" :key="idx" class="lang-item">
                     <div class="lang-name">{{ lang.name }}</div>

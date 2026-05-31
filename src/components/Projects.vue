@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { ExternalLink } from '@lucide/vue'
+import { t, val } from '../i18n.js'
 import SafeImage from './SafeImage.vue'
 
 const props = defineProps({
@@ -34,6 +35,12 @@ const isFlagship = (id) => {
   // BHE-GTK (1), LMS (8), SAITRANS Mobile (9)
   return ['1', '8', '9'].includes(id)
 }
+
+const getCategoryLabel = (cat) => {
+  if (cat === 'All') return t('catAll')
+  if (cat === 'API') return 'APIs'
+  return cat
+}
 </script>
 
 <template>
@@ -45,11 +52,10 @@ const isFlagship = (id) => {
     <div class="container">
       <!-- Section Header -->
       <div class="section-title-wrapper">
-        <span class="subtitle">My Masterpieces</span>
-        <h2 class="section-title">Featured <span class="text-accent glow-text">Works & Systems</span></h2>
+        <span class="subtitle">{{ t('projectsSubtitle') }}</span>
+        <h2 class="section-title">{{ t('projectsTitlePart1') }} <span class="text-accent glow-text">{{ t('projectsTitlePart2') }}</span></h2>
         <p class="section-intro">
-          A collection of enterprise-grade logistics platforms, government-level accountability systems, 
-          and production-grade mobile applications built for clients across various regions.
+          {{ t('projectsIntro') }}
         </p>
         <div class="title-divider"></div>
       </div>
@@ -62,7 +68,7 @@ const isFlagship = (id) => {
           @click="activeFilter = cat" 
           :class="['filter-btn', { active: activeFilter === cat }]"
         >
-          <span>{{ cat }}</span>
+          <span>{{ getCategoryLabel(cat) }}</span>
           <span class="filter-count">{{ projectCounts[cat] || 0 }}</span>
         </button>
       </div>
@@ -78,10 +84,9 @@ const isFlagship = (id) => {
           <!-- Flagship Ribbon Badge -->
           <div v-if="isFlagship(project.id)" class="flagship-badge">
             <span class="pulse-dot"></span>
-            ⚡ ENTERPRISE FLAGSHIP SYSTEM
+            ⚡ {{ t('projectsFlagship') }}
           </div>
 
-          <!-- Project Image Area -->
           <!-- Project Image Area -->
           <div class="project-img-wrapper">
             <SafeImage 
@@ -105,11 +110,11 @@ const isFlagship = (id) => {
           <!-- Project Info Area -->
           <div class="project-info">
             <div class="project-meta">
-              <span class="project-category">{{ project.category }}</span>
+              <span class="project-category">{{ getCategoryLabel(project.category) }}</span>
               <span class="project-location" v-if="isFlagship(project.id)">Surabaya / Jakarta</span>
             </div>
             <h3 class="project-title">{{ project.title }}</h3>
-            <p class="project-description">{{ project.description }}</p>
+            <p class="project-description">{{ val(project, 'description') }}</p>
             
             <div class="project-tags">
               <span v-for="tag in project.tags" :key="tag" class="tag-badge">
@@ -122,9 +127,9 @@ const isFlagship = (id) => {
       
       <!-- Footer Call to Action for GitHub -->
       <div class="projects-cta">
-        <p>Want to see the code structure or discuss architecture designs?</p>
-        <a href="https://github.com" target="_blank" class="btn-secondary cta-btn">
-          View More on GitHub 
+        <p>{{ t('projectsCtaText') }}</p>
+        <a href="https://github.com/darymahdi" target="_blank" class="btn-secondary cta-btn">
+          {{ t('projectsCtaBtn') }} 
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>

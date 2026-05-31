@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertTriangle } from '@lucide/vue'
+import { t, val } from '../i18n.js'
 
 const name = ref('')
 const email = ref('')
@@ -61,18 +62,17 @@ const submitForm = () => {
     <div class="container">
       <!-- Section Header -->
       <div class="section-title-wrapper">
-        <span class="subtitle">Get In Touch</span>
-        <h2 class="section-title">Contact <span class="text-accent glow-text">Me</span></h2>
+        <span class="subtitle">{{ t('contactSubtitle') }}</span>
+        <h2 class="section-title">{{ t('navContact') }} <span class="text-accent glow-text">{{ t('contactMePart2') }}</span></h2>
         <div class="title-divider"></div>
       </div>
 
       <div class="contact-grid">
         <!-- Left: Contact Details -->
         <div class="contact-info-container">
-          <h3 class="info-title">Let's build something great together</h3>
+          <h3 class="info-title">{{ t('contactTitle') }}</h3>
           <p class="info-desc">
-            Have a project in mind, want to discuss a job opportunity, or just want to say hi? 
-            Fill out the form or reach out directly through my social channels. I usually respond within 24 hours.
+            {{ t('contactIntro') }}
           </p>
 
           <div class="info-list">
@@ -81,8 +81,8 @@ const submitForm = () => {
                 <Mail :size="20" class="text-accent" />
               </div>
               <div class="info-details">
-                <span>Email Me</span>
-                <a href="mailto:darmah250903@gmail.com">darmah250903@gmail.com</a>
+                <span>{{ t('contactEmailMe') }}</span>
+                <a :href="'mailto:' + data.personal.email">{{ data.personal.email }}</a>
               </div>
             </div>
 
@@ -91,8 +91,8 @@ const submitForm = () => {
                 <Phone :size="20" class="text-accent" />
               </div>
               <div class="info-details">
-                <span>Call / WA</span>
-                <a href="tel:+6281357646859">+62 813 5764 6859</a>
+                <span>{{ t('contactCallWa') }}</span>
+                <a :href="'tel:' + data.personal.phone">{{ data.personal.phone }}</a>
               </div>
             </div>
 
@@ -101,8 +101,8 @@ const submitForm = () => {
                 <MapPin :size="20" class="text-accent" />
               </div>
               <div class="info-details">
-                <span>Location</span>
-                <p>Surabaya, East Java, Indonesia</p>
+                <span>{{ t('dashProfileLocation') }}</span>
+                <p>{{ data.personal.location }}</p>
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@ const submitForm = () => {
         <div class="contact-form-container glass-card">
           <form @submit.prevent="submitForm" class="contact-form">
             <div class="form-group">
-              <label for="name">Your Name *</label>
+              <label for="name">{{ t('contactFormName') }} *</label>
               <input 
                 type="text" 
                 id="name" 
@@ -124,7 +124,7 @@ const submitForm = () => {
             </div>
 
             <div class="form-group">
-              <label for="email">Email Address *</label>
+              <label for="email">{{ t('contactFormEmail') }} *</label>
               <input 
                 type="email" 
                 id="email" 
@@ -136,7 +136,7 @@ const submitForm = () => {
             </div>
 
             <div class="form-group">
-              <label for="subject">Subject</label>
+              <label for="subject">{{ t('contactFormSubject') }}</label>
               <input 
                 type="text" 
                 id="subject" 
@@ -147,7 +147,7 @@ const submitForm = () => {
             </div>
 
             <div class="form-group">
-              <label for="message">Message *</label>
+              <label for="message">{{ t('contactFormMessage') }} *</label>
               <textarea 
                 id="message" 
                 v-model="message" 
@@ -165,19 +165,19 @@ const submitForm = () => {
                 class="btn-primary submit-btn" 
                 :disabled="isSubmitting"
               >
-                <span v-if="!isSubmitting">Send Message</span>
-                <span v-else>Sending...</span>
+                <span v-if="!isSubmitting">{{ t('contactFormBtnSend') }}</span>
+                <span v-else>{{ t('contactFormBtnSending') }}</span>
                 <Send :size="16" />
               </button>
 
               <transition name="status-fade">
                 <div v-if="submitStatus === 'success'" class="status-msg success-msg">
                   <CheckCircle2 :size="16" />
-                  <span>Message sent successfully!</span>
+                  <span>{{ t('contactFormSuccess') }}</span>
                 </div>
                 <div v-else-if="submitStatus === 'error'" class="status-msg error-msg">
                   <AlertTriangle :size="16" />
-                  <span>Please fill out all fields.</span>
+                  <span>{{ t('contactFormError') }}</span>
                 </div>
               </transition>
             </div>

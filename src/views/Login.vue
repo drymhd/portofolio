@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Mail, Lock, LogIn, ArrowLeft, AlertCircle } from '@lucide/vue'
+import { t } from '../i18n.js'
 
 const emit = defineEmits(['login-success', 'cancel'])
 
@@ -23,7 +24,7 @@ const handleLogin = () => {
       localStorage.setItem('dary_admin_logged_in', 'true')
       emit('login-success')
     } else {
-      errorMsg.value = 'Invalid email or password.'
+      errorMsg.value = t('loginError')
     }
     isSubmitting.value = false
   }, 800)
@@ -40,8 +41,8 @@ const handleLogin = () => {
       <div class="login-card glass-card">
         <div class="login-header">
           <div class="logo-badge">DM</div>
-          <h2>Admin Access</h2>
-          <p>Log in to customize your portfolio context.</p>
+          <h2>{{ t('loginTitle') }}</h2>
+          <p>{{ t('loginSubtitle') }}</p>
         </div>
 
         <form @submit.prevent="handleLogin" class="login-form">
@@ -54,7 +55,7 @@ const handleLogin = () => {
           </transition>
 
           <div class="form-group">
-            <label for="login-email">Email Address</label>
+            <label for="login-email">{{ t('loginEmail') }}</label>
             <div class="input-wrapper">
               <Mail :size="16" class="input-icon" />
               <input 
@@ -69,7 +70,7 @@ const handleLogin = () => {
           </div>
 
           <div class="form-group">
-            <label for="login-password">Password</label>
+            <label for="login-password">{{ t('loginPassword') }}</label>
             <div class="input-wrapper">
               <Lock :size="16" class="input-icon" />
               <input 
@@ -84,19 +85,19 @@ const handleLogin = () => {
           </div>
 
           <div class="login-tip">
-            <span>Tip: Use <strong>darmah250903@gmail.com</strong> and <strong>dary123</strong></span>
+            <span>{{ t('loginTip') }}</span>
           </div>
 
           <button type="submit" class="btn-primary submit-btn" :disabled="isSubmitting">
-            <span v-if="!isSubmitting">Login to Dashboard</span>
-            <span v-else>Signing in...</span>
+            <span v-if="!isSubmitting">{{ t('loginBtn') }}</span>
+            <span v-else>{{ t('loginSigningIn') }}</span>
             <LogIn :size="16" />
           </button>
         </form>
 
         <div class="login-footer">
           <a href="#" @click.prevent="emit('cancel')" class="back-link">
-            <ArrowLeft :size="14" /> Back to Portfolio
+            <ArrowLeft :size="14" /> {{ t('loginBack') }}
           </a>
         </div>
       </div>

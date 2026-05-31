@@ -25,9 +25,11 @@ const initData = () => {
   if (localData) {
     try {
       const parsed = JSON.parse(localData)
-      // Check if it's the old mock projects list or missing recent ones, if so overwrite it
+      // Check if it's the old mock projects list or missing recent ones, or lacks bilingual support
       const hasRecentProjects = parsed.projects && parsed.projects.some(p => p.title.includes('HIMSI CENGKARENG'))
-      if (!hasRecentProjects) {
+      const hasBilingualSupport = parsed.personal && parsed.personal.bio_en !== undefined
+      
+      if (!hasRecentProjects || !hasBilingualSupport) {
         portfolioData.value = defaultData
         localStorage.setItem('dary_portfolio_data', JSON.stringify(defaultData))
       } else {
