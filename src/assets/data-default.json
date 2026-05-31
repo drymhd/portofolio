@@ -1,0 +1,292 @@
+{
+  "personal": {
+    "name": "Dary Mahdi",
+    "title": "Full-Stack & Mobile Developer",
+    "email": "darmah250903@gmail.com",
+    "phone": "+6281357646859",
+    "location": "Surabaya, Indonesia",
+    "address": "DK. Bulak Banteng Pratama 4 No 19, Surabaya, Indonesia",
+    "linkedin": "https://www.linkedin.com/in/darymahdi",
+    "github": "https://github.com/",
+    "bio": "Passionate software developer with a strong foundation in programming and application development. Extensive knowledge of programming languages such as Dart, PHP, CSS, and JavaScript, and proficient in utilizing various frameworks and development tools.",
+    "aboutText": "I am a Full-Stack and Mobile Developer based in Surabaya, Indonesia. With over 3 years of hands-on experience in building scalable web applications and high-performance mobile apps, I enjoy solving complex problems and turning ideas into responsive digital solutions. I am constantly learning new technologies and improving my skills to deliver state-of-the-art products.",
+    "stats": [
+      { "label": "Years Experience", "value": "3+" },
+      { "label": "Completed Projects", "value": "15+" },
+      { "label": "Tech Stacks", "value": "12+" },
+      { "label": "Certifications", "value": "3+" }
+    ]
+  },
+  "skills": [
+    {
+      "category": "Programming Languages",
+      "items": [
+        { "name": "PHP", "level": 90 },
+        { "name": "JavaScript", "level": 85 },
+        { "name": "Dart", "level": 80 },
+        { "name": "GO", "level": 75 },
+        { "name": "Java", "level": 70 }
+      ]
+    },
+    {
+      "category": "Frameworks",
+      "items": [
+        { "name": "Laravel", "level": 90 },
+        { "name": "Vue.js", "level": 85 },
+        { "name": "Node.js", "level": 80 },
+        { "name": "Flutter", "level": 85 },
+        { "name": "Express", "level": 75 },
+        { "name": "GIN / Quarkus", "level": 70 }
+      ]
+    },
+    {
+      "category": "Technologies & Tools",
+      "items": [
+        { "name": "Rest API", "level": 95 },
+        { "name": "HTML & CSS", "level": 90 },
+        { "name": "Git & GitHub", "level": 85 },
+        { "name": "SQL & Databases", "level": 80 },
+        { "name": "Docker", "level": 65 }
+      ]
+    },
+    {
+      "category": "Soft Skills",
+      "items": [
+        { "name": "Problem Solving", "level": 90 },
+        { "name": "Team Collaboration", "level": 95 },
+        { "name": "Communication", "level": 85 },
+        { "name": "Attention to Detail", "level": 88 },
+        { "name": "Adaptability", "level": 90 },
+        { "name": "Time Management", "level": 85 }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "PT. SAI Trans Indonesia",
+      "location": "Jakarta, Indonesia (Remote)",
+      "role": "Fullstack Developer",
+      "period": "Agt 2023 - Present",
+      "bullets": [
+        "Lead the design, development, and maintenance of internal applications, including the Logistic Management System (LMS), optimizing operational efficiency.",
+        "Developed and managed mobile applications (iOS & Android) for logistics operations using Laravel, Vue, Node.js, and Flutter, enhancing functionality and user engagement.",
+        "Collaborated with cross-functional teams to ensure a reliable and scalable application infrastructure, resulting in a 30% reduction in operational delays."
+      ]
+    },
+    {
+      "company": "CV. Mcflyon Teknologi Indonesia",
+      "location": "Surabaya, Indonesia",
+      "role": "Junior Software Developer",
+      "period": "Agt 2022 - Agt 2023",
+      "bullets": [
+        "Designed and maintained responsive websites and applications, working with technologies such as HTML, CSS, and JavaScript.",
+        "Developed front-end and back-end functionalities using frameworks like Node, React, Vue, Flutter, and Laravel, achieving faster and more efficient project deployment.",
+        "Enhanced application responsiveness and user interface, ensuring a positive and seamless user experience."
+      ]
+    },
+    {
+      "company": "CV. Mcflyon Teknologi Indonesia",
+      "location": "Surabaya, Indonesia",
+      "role": "Web Developer (Intern)",
+      "period": "Jan 2021 - Jun 2021",
+      "bullets": [
+        "Assisted in the development and maintenance of applications to meet user preferences, utilizing Laravel and Vue.js.",
+        "Supported the implementation of user-centered features, improving overall application satisfaction and usability for clients."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "Universitas Insan Cita Indonesia",
+      "degree": "Bachelor's in Informatics (SEMESTA Scholarship)",
+      "period": "Agt 2022 - Apr 2026 (7 Semester)",
+      "details": "IPK: 3.67 / 4.00"
+    },
+    {
+      "school": "SMKN NEGERI 2 SURABAYA",
+      "degree": "Rekayasa Perangkat Lunak (Software Engineering)",
+      "period": "2019 - 2022",
+      "details": "Learned fundamental coding, software databases, and algorithmic logic."
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Junior Web Developer",
+      "issuer": "BNSP",
+      "period": "2023 - 2026"
+    },
+    {
+      "title": "Rest API (Intermediate)",
+      "issuer": "HackerRank",
+      "period": "2024"
+    },
+    {
+      "title": "SQL (Intermediate)",
+      "issuer": "HackerRank",
+      "period": "2024"
+    }
+  ],
+  "languages": [
+    { "name": "Indonesia", "proficiency": "Native" },
+    { "name": "English", "proficiency": "Intermediate (Professional communication and writing)" }
+  ],
+  "services": [
+    {
+      "icon": "Code",
+      "title": "Fullstack Web Dev",
+      "description": "Building high-performance, responsive web applications using Laravel, Node.js, and Vue.js. Clean code and optimized database structures."
+    },
+    {
+      "icon": "Smartphone",
+      "title": "Mobile App Dev",
+      "description": "Crafting cross-platform native iOS & Android applications using Flutter, complete with local state management, background sync, and offline support."
+    },
+    {
+      "icon": "Cpu",
+      "title": "Backend API Engineering",
+      "description": "Designing secure, standard REST APIs and microservices using Express, Gin (Go), and Laravel. Scalable structures with comprehensive docs."
+    },
+    {
+      "icon": "Activity",
+      "title": "Logistic Systems (LMS)",
+      "description": "Specialized in creating Logistic Management Systems, route optimizations, operational delay reductions, and dashboard analytics tracking."
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "title": "BHE-GTK (Absensi Gresik)",
+      "description": "An employee attendance collection mobile application designed for the Education Office of Gresik Regency. Features geolocation checks and device lock verification.",
+      "category": "Mobile",
+      "tags": ["Flutter", "Dart", "Rest API", "Android"],
+      "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=600",
+      "link": "https://play.google.com/store/apps/details?id=com.dindikgresik.bhegtk&pli=1"
+    },
+    {
+      "id": "2",
+      "title": "SIKARESOI - BAROMBONG",
+      "description": "Cascading Information System for Optimal and Integral Remuneration management, tailored for employees and lecturers of Poltekpel Barombong.",
+      "category": "Web",
+      "tags": ["Laravel", "PHP", "JavaScript", "PostgreSQL"],
+      "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=600",
+      "link": "https://sikaresoi.poltekpelbarombong.ac.id"
+    },
+    {
+      "id": "3",
+      "title": "E-TPP (Halmahera Timur)",
+      "description": "Employee Performance Evaluation and Additional Income Information System built for the regional government of Halmahera Timur.",
+      "category": "Web",
+      "tags": ["Vue.js", "Laravel", "PHP", "MySQL"],
+      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=600",
+      "link": "https://etpp-haltimkab.mcflyon.co.id"
+    },
+    {
+      "id": "4",
+      "title": "Simanis (Masyarakat Miskin)",
+      "description": "Information system to record conditions of families, housing infrastructure, and socio-economic aspects in Lamongan Regency to determine house habitability.",
+      "category": "Web",
+      "tags": ["Vue.js", "Laravel", "PHP", "MySQL"],
+      "image": "https://images.unsplash.com/photo-1518364538800-6bcb3f25da49?auto=format&fit=crop&q=80&w=600",
+      "link": "https://simanis.mcflyon.co.id"
+    },
+    {
+      "id": "5",
+      "title": "BDC (Business Development Center)",
+      "description": "Enterprise-level portal for the Business Development Center of the Department of Cooperatives and Small Medium Enterprises of East Java Province.",
+      "category": "Web",
+      "tags": ["Laravel", "PHP", "JavaScript", "MySQL"],
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600",
+      "link": "https://bdc.data.diskopukm.jatimprov.go.id"
+    },
+    {
+      "id": "6",
+      "title": "Mbak ELSA (Lamongan)",
+      "description": "Government-level Performance Accountability System (PASGA) configured to track targets and accountability indicators for Lamongan Regency.",
+      "category": "Web",
+      "tags": ["Laravel", "PHP", "MySQL"],
+      "image": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&q=80&w=600",
+      "link": "https://elsa.lamongankab.go.id"
+    },
+    {
+      "id": "7",
+      "title": "Remun STTD (Bekasi)",
+      "description": "Cascading Information System for Optimal and Integral Remuneration tracking built for PTDI-STTD Bekasi to manage faculty benefits.",
+      "category": "Web",
+      "tags": ["Vue.js", "Laravel", "PostgreSQL"],
+      "image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=600",
+      "link": "https://sttd.mcflyon.co.id"
+    },
+    {
+      "id": "8",
+      "title": "LMS (Logistic Management System)",
+      "description": "Robust internal logistics management suite built for PT. SAI Trans Indonesia to handle container manifest registry, export-import, and billing.",
+      "category": "Web",
+      "tags": ["Vue.js", "Laravel", "PostgreSQL"],
+      "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=600",
+      "link": "https://saitrans.co.id"
+    },
+    {
+      "id": "9",
+      "title": "SAITRANS Mobile App",
+      "description": "Dual-platform native app for freight coordinators and drivers to register shipping manifests, track deliveries, and manage export-import jobs.",
+      "category": "Mobile",
+      "tags": ["Flutter", "Dart", "Node.js", "Rest API"],
+      "image": "https://images.unsplash.com/photo-1516576880358-1f6f890c07d3?auto=format&fit=crop&q=80&w=600",
+      "link": "https://play.google.com/store/apps/details?id=com.saitrans.lms_mobile"
+    },
+    {
+      "id": "10",
+      "title": "LOS (Logistic Operator System)",
+      "description": "Warehouse and yard operator utility app to monitor inbound, outbound, sorting, and scanning of cargo packages on mobile platforms.",
+      "category": "Mobile",
+      "tags": ["Flutter", "Dart", "Node.js"],
+      "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600",
+      "link": "https://saitrans.co.id"
+    },
+    {
+      "id": "11",
+      "title": "Courier Mobile Application",
+      "description": "Mobile application for tracking delivery items, dynamic route recommendations, signature verification, and delivery completion.",
+      "category": "Mobile",
+      "tags": ["Flutter", "Dart", "Rest API"],
+      "image": "https://images.unsplash.com/photo-1566576912321-d58ded7a214f?auto=format&fit=crop&q=80&w=600",
+      "link": "https://saitrans.co.id"
+    },
+    {
+      "id": "12",
+      "title": "CRM (Customer Relations)",
+      "description": "Customer relationship management software built to log tickets, support inquiries, and customer communication pathways for PT. SAI Trans.",
+      "category": "Web",
+      "tags": ["Vue.js", "Laravel", "MySQL"],
+      "image": "https://images.unsplash.com/photo-1552581230-c01591d6f29a?auto=format&fit=crop&q=80&w=600",
+      "link": "https://saitrans.co.id"
+    },
+    {
+      "id": "13",
+      "title": "SAITRANS Finance Panel",
+      "description": "Internal financial management system for handling corporate purchasing, product sales, general operating expenses, and staff payrolls.",
+      "category": "Web",
+      "tags": ["Vue.js", "Laravel", "MySQL"],
+      "image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=600",
+      "link": "https://finance.sai-transport.com"
+    },
+    {
+      "id": "14",
+      "title": "Courier App Singapore (Mobile)",
+      "description": "Specialized logistics application designed to orchestrate and track courier deliveries within Singapore.",
+      "category": "Mobile",
+      "tags": ["Flutter", "Dart", "Rest API"],
+      "image": "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&q=80&w=600",
+      "link": "https://play.google.com/store/apps/details?id=com.lms_sg.courier"
+    },
+    {
+      "id": "15",
+      "title": "HIMSI CENGKARENG Profile",
+      "description": "A responsive organization profile and portal for the Student Association of Informatics (HIMSI) Cengkareng.",
+      "category": "Web",
+      "tags": ["Laravel", "PHP", "Tailwind CSS"],
+      "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600",
+      "link": "https://himsicengkareng.my.id"
+    }
+  ]
+}

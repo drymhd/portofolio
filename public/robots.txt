@@ -1,0 +1,10 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow crawlers from indexing private admin views
+Disallow: /#/login
+Disallow: /#/dashboard
+
+# Specify the sitemap location
+Sitemap: https://drxmhx.my.id/sitemap.xml
