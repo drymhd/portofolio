@@ -1,6 +1,6 @@
 <script setup>
 import { ArrowRight, Download, Mail } from '@lucide/vue'
-import avatarUrl from '../assets/avatar.png'
+const avatarUrl = '/avatar.png'
 
 const props = defineProps({
   data: {
