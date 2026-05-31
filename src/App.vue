@@ -15,6 +15,7 @@ import Login from './views/Login.vue'
 import SplashScreen from './components/SplashScreen.vue'
 import ParticlesBackground from './components/ParticlesBackground.vue'
 import CVPrintTemplate from './components/CVPrintTemplate.vue'
+import CustomCursor from './components/CustomCursor.vue'
 
 const activePage = ref('home')
 const portfolioData = ref(null)
@@ -183,6 +184,9 @@ onUnmounted(() => {
 
     <!-- Printable CV Template -->
     <CVPrintTemplate :data="portfolioData" />
+
+    <!-- Custom Animated Trailing Cursor -->
+    <CustomCursor v-if="!showSplash && activePage !== 'dashboard'" />
   </div>
   
   <div v-else class="loading-screen">
@@ -259,7 +263,8 @@ onUnmounted(() => {
   .login-content,
   .dashboard-content,
   .loading-screen,
-  .splash-screen {
+  .splash-screen,
+  .custom-cursor-wrapper {
     display: none !important;
   }
 }

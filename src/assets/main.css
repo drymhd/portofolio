@@ -235,3 +235,10 @@ a {
     padding: 60px 0;
   }
 }
+
+/* Custom Cursor styling: Hide default cursor on desktop */
+@media (hover: hover) {
+  html, body, a, button, select, input, textarea, [role="button"], .clickable {
+    cursor: none !important;
+  }
+}
