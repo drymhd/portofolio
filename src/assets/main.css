@@ -242,3 +242,20 @@ a {
     cursor: none !important;
   }
 }
+
+/* Disable text selection on public content to protect text copying */
+.public-content {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Re-enable selection on input forms in contact section */
+.public-content input,
+.public-content textarea {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+}

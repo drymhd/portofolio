@@ -121,12 +121,57 @@ const handleScrollSpy = () => {
   }
 }
 
+// Prevent right click and common dev tools shortcuts on public pages
+const blockDevTools = (e) => {
+  if (activePage.value === 'dashboard') return
+
+  if (e.type === 'contextmenu') {
+    e.preventDefault()
+    return false
+  }
+
+  if (e.type === 'keydown') {
+    // F12 key
+    if (e.key === 'F12' || e.keyCode === 123) {
+      e.preventDefault()
+      return false
+    }
+    // Ctrl+Shift+I / Cmd+Opt+I (Inspect)
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.keyCode === 73)) {
+      e.preventDefault()
+      return false
+    }
+    // Ctrl+Shift+J / Cmd+Opt+J (Console)
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'J' || e.key === 'j' || e.keyCode === 74)) {
+      e.preventDefault()
+      return false
+    }
+    // Ctrl+Shift+C / Cmd+Opt+C (Element selection)
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'C' || e.key === 'c' || e.keyCode === 67)) {
+      e.preventDefault()
+      return false
+    }
+    // Ctrl+U / Cmd+Opt+U (View source code)
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'U' || e.key === 'u' || e.keyCode === 85)) {
+      e.preventDefault()
+      return false
+    }
+    // Ctrl+S / Cmd+S (Save page HTML)
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'S' || e.key === 's' || e.keyCode === 83)) {
+      e.preventDefault()
+      return false
+    }
+  }
+}
+
 onMounted(() => {
   initData()
   
   window.addEventListener('hashchange', handleHashChange)
   window.addEventListener('mousemove', updateMousePosition)
   window.addEventListener('scroll', handleScrollSpy)
+  window.addEventListener('contextmenu', blockDevTools)
+  window.addEventListener('keydown', blockDevTools)
   
   handleHashChange()
   handleScrollSpy() // Initial check on mount
@@ -136,6 +181,8 @@ onUnmounted(() => {
   window.removeEventListener('hashchange', handleHashChange)
   window.removeEventListener('mousemove', updateMousePosition)
   window.removeEventListener('scroll', handleScrollSpy)
+  window.removeEventListener('contextmenu', blockDevTools)
+  window.removeEventListener('keydown', blockDevTools)
 })
 </script>
 
